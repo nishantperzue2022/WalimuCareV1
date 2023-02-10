@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<popup:PopupPage
+    x:Class="HkMobileApp.Views.PopUps.WelcomeMessageForUserPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:popup="clr-namespace:Rg.Plugins.Popup.Pages;assembly=Rg.Plugins.Popup">
+    <popup:PopupPage.Content>
+        <StackLayout
+            Padding="10"
+            HorizontalOptions="Center"
+            VerticalOptions="Center">
+
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource Secondary}"
+                CornerRadius="5"
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand">
+                <StackLayout Orientation="Vertical">
+
+                    <StackLayout HorizontalOptions="FillAndExpand">
+                        <Image
+                            Margin="5"
+                            HeightRequest="25"
+                            HorizontalOptions="End"
+                            Source="deleteWhite"
+                            VerticalOptions="Center">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Image.GestureRecognizers>
+                        </Image>
+                    </StackLayout>
+
+                    <Label
+                        x:Name="lblMessage"
+                        Margin="20,-10,20,20"
+                        FontSize="Default"
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        LineHeight="1.5"
+                        Style="{x:StaticResource MedBookLabel}"
+                        TextColor="White"
+                        VerticalTextAlignment="Center">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding MsgPartOne}" />
+                                    <Span Text="{Binding MsgPartTwo}" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding GoToWebsiteCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text="{Binding MsgPartThree}" />
+                                    <Span Text="{Binding MsgPartFour}" TextColor="Blue">
+                                        <Span.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding DailPhoneCommand}" />
+                                        </Span.GestureRecognizers>
+                                    </Span>
+                                    <Span Text="{Binding MsgPartFive}" />
+
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+            </Frame>
+
+        </StackLayout>
+    </popup:PopupPage.Content>
+</popup:PopupPage>

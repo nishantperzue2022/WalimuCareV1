@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.WoteCoverViews.WoteVerifyDetailsAndPayPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+
+        </StackLayout>
+    </Shell.TitleView>
+
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+
+            <Style
+                x:Key="btnFilledSecondary"
+                BasedOn="{StaticResource ButtonFilledSecondary}"
+                TargetType="Button">
+                <Setter Property="CornerRadius" Value="0" />
+                <Setter Property="FontSize" Value="25" />
+                <Setter Property="FontFamily" Value="VolteBold" />
+            </Style>
+
+
+            <Style
+                x:Key="MoneyLabel"
+                BasedOn="{StaticResource MedBookLabel}"
+                TargetType="Label">
+                <Setter Property="FontFamily" Value="VolteBold" />
+                <Setter Property="FontSize" Value="40" />
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                Padding="5"
+                AbsoluteLayout.LayoutBounds="0,0,1,0.2"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource Primary}">
+
+                <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Label
+                        Margin="-35,0,0,-30"
+                        Text="Ksh. "
+                        TextColor="White" />
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource MoneyLabel}"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="{Binding OrderDetails.amount, StringFormat='{}{0:N0}'}" />
+                                    <Span Text="/=" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+
+                </StackLayout>
+            </StackLayout>
+
+
+            <ScrollView AbsoluteLayout.LayoutBounds="0,1,1,0.8" AbsoluteLayout.LayoutFlags="All">
+
+                <StackLayout
+                    Padding="20"
+                    HorizontalOptions="FillAndExpand"
+                    Spacing="10"
+                    VerticalOptions="FillAndExpand">
+
+                    <Frame Margin="5" Padding="0">
+                        <StackLayout Margin="0" Padding="0">
+
+                            <StackLayout
+                                Margin="0"
+                                Padding="0"
+                                Orientation="Horizontal">
+                                <Label
+                                    Margin="5"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabel}"
+                                    Text="Order  Details" />
+
+
+
+                            </StackLayout>
+
+                            <BoxView
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="Start" />
+
+                            <StackLayout Padding="10">
+
+                                <Grid ColumnDefinitions="0.5*,0.5*" RowDefinitions="*,*,*,*,*">
+
+                                    <StackLayout Grid.Row="0" Grid.Column="0">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Order Number"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.orderNumber}" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="0" Grid.Column="1">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Order Date"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.orderDate, StringFormat='{}{0:dd-MMM-yyyy}'}" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" Grid.Column="0">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Amount"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-10,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Ksh. " />
+                                                        <Span Text="{Binding OrderDetails.amount, StringFormat='{}{0:N0}'}" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="1" Grid.Column="1">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Insurance Cover"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-10,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.insuranceCoverName}" />
+                                    </StackLayout>
+
+
+                                    <StackLayout Grid.Row="2" Grid.Column="0">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Receipt Number"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.receiptNumber}" />
+                                    </StackLayout>
+
+                                    <StackLayout Grid.Row="2" Grid.Column="1">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Medical Product"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.medicalProductName}" />
+                                    </StackLayout>
+
+
+
+
+                                    <StackLayout
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Principal Dependant"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.principleDependants}" />
+                                    </StackLayout>
+
+
+                                    <StackLayout
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        Grid.ColumnSpan="2">
+                                        <Label
+                                            FontSize="Micro"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="Agent Name"
+                                            TextColor="{StaticResource Primary}" />
+                                        <Label
+                                            Margin="0,-5,0,10"
+                                            FontSize="Medium"
+                                            Style="{StaticResource MedBookLabelNormal}"
+                                            Text="{Binding OrderDetails.agentName}" />
+                                    </StackLayout>
+                                </Grid>
+
+
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+
+
+                </StackLayout>
+
+            </ScrollView>
+
+            <material:MaterialButton
+                Padding="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,0.1"
+                AbsoluteLayout.LayoutFlags="All"
+                Command="{Binding SendPaymentRequestCommand}"
+                CornerRadius="0"
+                Style="{StaticResource ButtonMaterialFilledPrimary}"
+                Text="PAY"
+                TextColor="White" />
+
+
+
+
+
+            <!--<StackLayout
+                Padding="5"
+                AbsoluteLayout.LayoutBounds="0,1,1,0.1"
+                AbsoluteLayout.LayoutFlags="All"
+                BackgroundColor="{StaticResource Secondary}">
+                <Label
+                    FontFamily="Volte"
+                    FontSize="Large"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="PAY NOW"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+            </StackLayout>-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

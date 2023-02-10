@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.BomaSelectCoverPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:combobox="clr-namespace:Syncfusion.XForms.ComboBox;assembly=Syncfusion.SfComboBox.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    Title="Boma Select Cover Type">
+
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="AddDepedantLabel"
+                BasedOn="{StaticResource MedBookLabel}"
+                TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="Margin" Value="0,0,0,0" />
+
+            </Style>
+
+            <Style
+                x:Key="BomaContainerOutline"
+                BasedOn="{StaticResource ContainerOutline}"
+                TargetType="inputLayout:SfTextInputLayout">
+                <Setter Property="Padding" Value="0" />
+                <Setter Property="FocusedColor" Value="Gray" />
+                <Setter Property="ContainerBackgroundColor" Value="{StaticResource SecondaryLight4}" />
+                <Setter Property="OutlineCornerRadius" Value="5" />
+                <Setter Property="Margin" Value="0,0,0,20" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <ScrollView VerticalOptions="FillAndExpand">
+            <StackLayout Margin="20">
+                <Label
+                    Style="{StaticResource AddDepedantLabel}"
+                    Text="Select Boma Cover Type"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+
+                <StackLayout
+                    Margin="0,0,0,20"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding IsMplus3Checked}"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource AddDepedantLabel}"
+                        Text="M + 3"
+                        TextColor="{StaticResource DefaultFontColor}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding IsMplus5Checked}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource AddDepedantLabel}"
+                        Text="M + 5"
+                        TextColor="{StaticResource DefaultFontColor}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource AddDepedantLabel}"
+                    Text="Select Family Size"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+
+                <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                    <!--<combobox:SfComboBox
+                        Margin="0"
+                        DataSource="{Binding FamilySizes}"
+                        DisplayMemberPath="{Binding .}"
+                        HeightRequest="45"
+                        SelectedItem="{Binding SelectedFamilySize}"
+                        VerticalOptions="CenterAndExpand" />-->
+                </inputLayout:SfTextInputLayout>
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource AddDepedantLabel}"
+                    Text="Period"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+
+                <StackLayout
+                    Margin="0,0,0,20"
+                    Orientation="Horizontal"
+                    VerticalOptions="Start">
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding IsPeriod1yrSelected}"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource AddDepedantLabel}"
+                        Text="1 Year"
+                        TextColor="{StaticResource DefaultFontColor}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource AddDepedantLabel}"
+                        Text="2 Years (10% discount)"
+                        TextColor="{StaticResource DefaultFontColor}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource AddDepedantLabel}"
+                    Text="Total Premium"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center" />
+
+                <Label
+                    Style="{StaticResource MedBookLabel}"
+                    VerticalOptions="Start"
+                    VerticalTextAlignment="Center">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Ksh. " />
+                                <Span Text="{Binding TotalPremium}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+                <material:MaterialButton
+                    Margin="0,20,0,0"
+                    ButtonType="Elevated"
+                    Command="{Binding CompleteBuyCoverCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource ButtonFilledPrimary}"
+                    Text="Complete"
+                    TextTransform="None"
+                    VerticalOptions="Center"
+                    Visual="Material" />
+
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

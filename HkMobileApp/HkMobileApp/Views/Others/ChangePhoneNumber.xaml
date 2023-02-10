@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.Others.ChangePhoneNumber"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customrenderer="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    NavigationPage.HasNavigationBar="True">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+
+    <ContentPage.Content>
+        <ScrollView>
+            <AbsoluteLayout
+                Margin="10"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <Label
+                    AbsoluteLayout.LayoutBounds="1,1,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    FontSize="30"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="Change Phone Number Request" />
+                <Label
+                    AbsoluteLayout.LayoutBounds="1,1,1,0.8"
+                    AbsoluteLayout.LayoutFlags="All"
+                    FontSize="Subtitle"
+                    HorizontalTextAlignment="Center"
+                    Style="{StaticResource MedBookLabelNormal}"
+                    Text="Enter the new phone number. Please note the changes will have to be reviewed by our team before they take effect. Your patience will be appreciated" />
+
+                <inputLayout:SfTextInputLayout
+                    AbsoluteLayout.LayoutBounds="1,1,1,0.6"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Hint="Enter New Phone Number"
+                    HintLabelStyle="{x:StaticResource HintLabel}"
+                    Style="{x:StaticResource ContainerOutline}">
+                    <Entry
+                        Margin="0,0,0,0"
+                        ClearButtonVisibility="WhileEditing"
+                        Keyboard="Numeric"
+                        PlaceholderColor="{x:StaticResource Primary}"
+                        Style="{x:StaticResource MedBookEntryNormal}"
+                        Text="{Binding NewPhoneNumber}" />
+                </inputLayout:SfTextInputLayout>
+
+                <Button
+                    Margin="0,0,0,0"
+                    AbsoluteLayout.LayoutBounds="1,0.6,1,0.085"
+                    AbsoluteLayout.LayoutFlags="All"
+                    Command="{Binding UpdateNewPhoneNumberCommand}"
+                    IsEnabled="{Binding EnableSubmitBtn}"
+                    Style="{x:StaticResource ButtonStyleLogin}"
+                    Text="Submit" />
+
+
+            </AbsoluteLayout>
+
+        </ScrollView>
+    </ContentPage.Content>
+</customrenderer:CustomContentPageRenderer>

@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.Base.SelectBomaOrWotePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="theNavigationBar"
+    Title="Select Wote or Boma">
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="medicalcovertemplate">
+
+                <Frame
+                    Margin="10"
+                    Padding="0"
+                    CornerRadius="5"
+                    HasShadow="True"
+                    HeightRequest="250"
+                    WidthRequest="310">
+                    <Grid Padding="0" ColumnDefinitions="0.5*,0.5*">
+
+                        <Image
+                            Grid.Column="0"
+                            Aspect="AspectFill"
+                            Source="{Binding ImageUrl}" />
+
+                        <StackLayout
+                            Grid.Column="1"
+                            Margin="0"
+                            Padding="0"
+                            Orientation="Vertical">
+
+                            <Label
+                                Margin="0,5,0,0"
+                                FontSize="15"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource MedBookLabel}"
+                                Text="{Binding Title}"
+                                TextColor="{StaticResource Secondary}"
+                                TextDecorations="Underline" />
+
+                            <Label
+                                FontSize="12"
+                                Style="{StaticResource MedBookLabelNormal}"
+                                Text="{Binding SubTitle}"
+                                TextColor="Black" />
+
+
+                            <ListView
+                                HasUnevenRows="True"
+                                ItemsSource="{Binding Description}"
+                                SelectionMode="None"
+                                SeparatorVisibility="None">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Label
+                                                Margin="10,3,3,3"
+                                                Padding="0"
+                                                FontSize="11"
+                                                Text="{Binding .}" />
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Button
+                                Margin="5"
+                                Padding="0"
+                                Command="{Binding Source={x:Reference theNavigationBar}, Path=BindingContext.GoToViewPremiumsAndBenefitsCommand}"
+                                CommandParameter="{Binding Id}"
+                                HeightRequest="30"
+                                HorizontalOptions="Center"
+                                Style="{StaticResource ButtonOutlineSecondary}"
+                                Text="Buy Cover"
+                                TextTransform="None"
+                                VerticalOptions="End" />
+
+
+
+
+                        </StackLayout>
+
+                    </Grid>
+                </Frame>
+
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+
+    <ContentPage.Content>
+        <StackLayout Margin="10" Padding="5">
+
+            <CollectionView
+                Margin="0"
+                BackgroundColor="{StaticResource HkBackground}"
+                ItemTemplate="{StaticResource medicalcovertemplate}"
+                ItemsSource="{Binding MedicalCoverCarousels}"
+                VerticalOptions="StartAndExpand">
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="20" Orientation="Vertical" />
+                </CollectionView.ItemsLayout>
+            </CollectionView>
+
+            <!--<ListView
+                HasUnevenRows="True"
+                ItemTemplate="{StaticResource medicalcovertemplate}"
+                ItemsSource="{Binding MedicalCoverCarousels}"
+                SelectionMode="None"
+                SeparatorVisibility="None" />-->
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

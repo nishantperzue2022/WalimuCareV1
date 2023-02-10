@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.UploadBomaDocuments"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material">
+
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="Upload Documents"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="Upload the following documents necessary for Buying your Cover"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <ScrollView
+            Padding="20"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+            <StackLayout>
+                <Label Style="{StaticResource BomaLabel}" Text="Nhif Card  *" />
+                <Label
+                    FontAttributes="Italic"
+                    FontSize="Micro"
+                    Style="{StaticResource BomaLabel}"
+                    Text="(Only pdf, png or jpg files types allowed)" />
+
+
+                <StackLayout
+                    Margin="0,0,0,20"
+                    Padding="2"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="{Binding NhifCardFile.FileName}"
+                        TextColor="Gray" />
+                    <Image
+                        HeightRequest="30"
+                        HorizontalOptions="EndAndExpand"
+                        Source="clip">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectNhifCardCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource BomaLabel}"
+                    Text="National ID *" />
+                <Label
+                    FontAttributes="Italic"
+                    FontSize="Micro"
+                    Style="{StaticResource BomaLabel}"
+                    Text="(Only pdf, png or jpg files types allowed)" />
+
+
+                <StackLayout
+                    Margin="0,0,0,20"
+                    Padding="2"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="{Binding NationalIdFile.FileName}"
+                        TextColor="Gray" />
+                    <Image
+                        HeightRequest="30"
+                        HorizontalOptions="EndAndExpand"
+                        Source="clip">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectNationalIdFileCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource BomaLabel}"
+                    Text="Passport *" />
+                <Label
+                    FontAttributes="Italic"
+                    FontSize="Micro"
+                    Style="{StaticResource BomaLabel}"
+                    Text="(Only pdf, png or jpg files types allowed)" />
+
+
+                <StackLayout
+                    Margin="0,0,0,20"
+                    Padding="2"
+                    Orientation="Horizontal"
+                    VerticalOptions="CenterAndExpand">
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="{Binding PassportFile.FileName}"
+                        TextColor="Gray" />
+                    <Image
+                        HeightRequest="30"
+                        HorizontalOptions="EndAndExpand"
+                        Source="clip">
+
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SelectPassportPhotoCommand}" />
+                        </Image.GestureRecognizers>
+                    </Image>
+                </StackLayout>
+
+                <material:MaterialButton
+                    Margin="0,40,0,0"
+                    ButtonType="Elevated"
+                    Command="{Binding ShowNextOfKinCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    Style="{StaticResource ButtonFilledSecondary}"
+                    Text="Proceed"
+                    TextTransform="None"
+                    VerticalOptions="Center"
+                    Visual="Material" />
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

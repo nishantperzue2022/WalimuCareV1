@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.ShellPages.AskLindaWriteUpPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Ask Linda">
+    <ContentPage.Content>
+        <Grid Padding="20" RowDefinitions="0.3*,0.5*,0.2*">
+
+            <StackLayout Grid.Row="0">
+
+                <Frame
+                    Padding="0"
+                    CornerRadius="60"
+                    HasShadow="True"
+                    HorizontalOptions="CenterAndExpand"
+                    IsClippedToBounds="True">
+                    <Image
+                        HeightRequest="100"
+                        Source="linda2"
+                        VerticalOptions="CenterAndExpand" />
+
+                </Frame>
+
+
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{x:StaticResource BomaLabel}"
+                    TextColor="{StaticResource Secondary}"
+                    VerticalOptions="End">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Hi " />
+                                <Span Text="{Binding FirstName}" />
+                                <Span Text=",  I am Linda" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+            </StackLayout>
+
+            <StackLayout Grid.Row="1">
+                <Label
+                    Margin="0,0,0,20"
+                    Style="{x:StaticResource MedBookLabelNormal}"
+                    Text="Your own Personal Medical Scheme and Health Chatbot Assistant. I work 24/7 to enhance your member experience and am available at the touch of a button. I can help you to access the following services:" />
+
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• View your Membership details " />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• View Policy Details and Limits" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Track Hospital Visits and Claims" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Hospital Visits OTP/MVC Number" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• View dependents" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Register dependents" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Lodge Complaints" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Check Preauth Status" />
+                <Label Style="{StaticResource MedBookLabelNormal}" Text="• Covid-19 updates, guidelines and so much more" />
+
+
+            </StackLayout>
+
+            <!--<Button
+                Grid.Row="2"
+                Clicked="Button_Clicked"
+                HorizontalOptions="CenterAndExpand"
+                Style="{StaticResource ButtonFilledSecondary}"
+                Text="WhatsApp"
+                TextTransform="None"
+                VerticalOptions="CenterAndExpand" />-->
+
+
+            <!--<flex:FlexButton
+                Grid.Row="2"
+                BackgroundColor="{StaticResource Secondary}"
+                Clicked="Button_Clicked"
+                CornerRadius="10"
+                ForegroundColor="#ffffff"
+                HeightRequest="50"
+                HighlightBackgroundColor="{StaticResource SecondaryLight2}"
+                HighlightForegroundColor="Black"
+                HorizontalOptions="Center"
+                Icon="whatsapplinda.png"
+                IconPadding="0,0,10,0"
+                Text="Chat With Me"
+                VerticalOptions="CenterAndExpand"
+                WidthRequest="300" />-->
+            <StackLayout Grid.Row="2" VerticalOptions="End">
+                <pancake:PancakeView
+                Margin="10"
+                BackgroundColor="{StaticResource Secondary}"
+                CornerRadius="10"
+                HeightRequest="50">
+
+                    <pancake:PancakeView.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="Button_Clicked"/>
+                    </pancake:PancakeView.GestureRecognizers>
+
+                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal" >
+                        <Image
+                        HeightRequest="30"
+                        HorizontalOptions="Start"
+                        Source="whatsapplinda.png"
+                        VerticalOptions="CenterAndExpand" />
+                        <Label
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="Chat With Me"
+                        TextColor="White"
+                            FontSize="18"
+                        TextTransform="None"
+                        VerticalOptions="CenterAndExpand"
+                            Padding="10"/>
+                    </StackLayout>
+
+                </pancake:PancakeView>
+            </StackLayout>
+            
+
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.LoadingScreen"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    BackgroundImageSource="loadingScreen.jpg">
+    <ContentPage.Content>
+        <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Label
+                AbsoluteLayout.LayoutBounds="0.5,0.8"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                FontSize="20"
+                Style="{x:StaticResource MedBookLabel}"
+                Text="Loading App ..."
+                TextColor="{x:StaticResource HkBackground}" />
+
+
+            <Image
+                x:Name="loader"
+                Margin="0,0,0,0"
+                AbsoluteLayout.LayoutBounds="0.5,0.7"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HeightRequest="100"
+                IsAnimationPlaying="True"
+                Source="betterloader.gif"
+                WidthRequest="100" />
+            <!--<Image Source="hkloading.gif"  x:Name="loader" IsAnimationPlaying="True" WidthRequest="150" Margin="0,0,0,100"/>-->
+            <!--<WebView
+                x:Name="webViewLoader"
+                AbsoluteLayout.LayoutBounds="0.5,0.7"
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                HeightRequest="70"
+                WidthRequest="70">
+                <WebView.Source>
+                    <HtmlWebViewSource Html="{Binding LoaderHtml}" />
+                </WebView.Source>
+            </WebView>-->
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>
+

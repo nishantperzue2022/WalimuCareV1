@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.SetUp.GettingStartedPage4"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:datatemplate="clr-namespace:HkMobileApp.DataTemplates"
+    xmlns:gettingStarted="clr-namespace:HkMobileApp.Views.SetUp"
+    Style="{StaticResource MyContentPageStyle}"
+    Visual="Material">
+
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="theRealTemplate">
+                <AbsoluteLayout
+                    BackgroundColor="White"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+                    <Image
+                        AbsoluteLayout.LayoutBounds="1,1,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Aspect="AspectFill"
+                        Source="{Binding ImageUrl}" />
+
+                    <StackLayout
+                        Padding="20"
+                        AbsoluteLayout.LayoutBounds="0,1,1,0.37"
+                        AbsoluteLayout.LayoutFlags="All"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Vertical"
+                        Spacing="1"
+                        VerticalOptions="EndAndExpand">
+
+                        <Label
+                            FontSize="20"
+                            Style="{x:StaticResource MedBookLabel}"
+                            Text="{Binding Title}"
+                            TextColor="WhiteSmoke"
+                            VerticalOptions="EndAndExpand" />
+
+                        <Label
+                            FontSize="Subtitle"
+                            Style="{x:StaticResource MedBookLabelNormal}"
+                            Text="{Binding SubTitle}"
+                            TextColor="WhiteSmoke"
+                            VerticalOptions="EndAndExpand" />
+
+
+                        <Grid
+                            Margin="0,10,0,0"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="EndAndExpand">
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*" />
+                                <ColumnDefinition Width="0.2*" />
+                                <ColumnDefinition Width="0.4*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                x:Name="lblSkip"
+                                Grid.Column="0"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="#00FCFAFA"
+                                BorderColor="{StaticResource HkBackground}"
+                                BorderWidth="0.2"
+                                Command="{Binding lblPreviousCommand}"
+                                CommandParameter="{Binding PreviousPosition}"
+                                CornerRadius="10"
+                                FontFamily="DinotRegular"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding PreviousBtnText}"
+                                TextColor="White" />
+
+
+
+                            <Button
+                                x:Name="lblNext"
+                                Grid.Column="2"
+                                Margin="0"
+                                Padding="0"
+                                BackgroundColor="#00FCFAFA"
+                                BorderColor="{StaticResource HkBackground}"
+                                BorderWidth="0.2"
+                                Command="{Binding lblNextCommand}"
+                                CommandParameter="{Binding NextPosition}"
+                                CornerRadius="10"
+                                FontFamily="DinotRegular"
+                                HorizontalOptions="EndAndExpand"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding NextBtnText}"
+                                TextColor="White" />
+
+                        </Grid>
+
+                    </StackLayout>
+
+
+
+                </AbsoluteLayout>
+            </DataTemplate>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+            <CarouselView
+                x:Name="corouselView"
+                Margin="0,-5,0,-5"
+                HorizontalOptions="FillAndExpand"
+                HorizontalScrollBarVisibility="Always"
+                ItemTemplate="{StaticResource theRealTemplate}"
+                ItemsSource="{Binding MyCorousels}"
+                VerticalOptions="FillAndExpand" />
+
+            <!--<IndicatorView x:Name="indicatorView"
+                   IndicatorColor="LightGray"
+                   SelectedIndicatorColor="DarkGray"
+                   HorizontalOptions="Center" />-->
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

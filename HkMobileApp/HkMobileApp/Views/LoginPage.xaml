@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.LoginPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    BackgroundColor="{x:StaticResource Primary}"
+    NavigationPage.HasNavigationBar="False"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+
+        <Grid
+            Padding="15"
+            HorizontalOptions="FillAndExpand"
+            RowDefinitions="0.5*,0.2*,0.1*,0.2*"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                Grid.Row="0"
+                Padding="0"
+                Spacing="0">
+
+                <StackLayout
+                    Padding="0"
+                    Spacing="0"
+                    VerticalOptions="CenterAndExpand">
+
+                    <Image
+                        Margin="0,0,0,0"
+                        Source="WhiteHkLogoWithBlueBackground.PNG"
+                        VerticalOptions="Start" />
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        HorizontalTextAlignment="Center"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="AFYA KWA WALIMU"
+                        TextColor="White"
+                        VerticalOptions="Start"
+                        WidthRequest="200" />
+                </StackLayout>
+
+
+            </StackLayout>
+
+
+
+
+            <Button
+                x:Name="btnSignUp"
+                Grid.Row="1"
+                Margin="15,0,15,0"
+                BackgroundColor="White"
+                Clicked="btnSignUp_Clicked"
+                Style="{x:StaticResource ButtonOutlinePrimary}"
+                Text="Sign Up"
+                TextColor="{x:StaticResource Primary}"
+                TextTransform="None"
+                VerticalOptions="End" />
+
+            <Label
+                Grid.Row="2"
+                Margin="0,15,0,15"
+                FontSize="18"
+                HorizontalOptions="CenterAndExpand"
+                Style="{x:StaticResource MedBookLabel}"
+                Text="Already have an account?"
+                TextColor="{x:StaticResource HkBackground}"
+                VerticalOptions="End" />
+
+            <Button
+                x:Name="btnLogin"
+                Grid.Row="3"
+                Margin="15,0,15,15"
+                Clicked="btnLogin_Clicked"
+                Style="{x:StaticResource ButtonStyleLogin}"
+                Text="Login"
+                VerticalOptions="Start" />
+
+            <!--<Label
+                Grid.Row="3"
+                HorizontalOptions="CenterAndExpand"
+                Text="Powered by Healthier Kenya"
+                TextColor="White"
+                VerticalOptions="End" />-->
+
+        </Grid>
+
+
+
+        <!--<Grid Padding="15"
+              VerticalOptions="FillAndExpand"
+              HorizontalOptions="FillAndExpand"
+              RowDefinitions="0.7*,0.1*,0.1*,0.1*" >
+
+            <Image Source="hkWhiteLogo.png"
+                   Grid.Row="0"
+                   Margin="0,0,0,0"
+                   VerticalOptions="CenterAndExpand"
+                   HeightRequest="200"
+                   ></Image>
+
+            <Button Style="{x:StaticResource ButtonStyleSignUp}"
+                    Grid.Row="1"
+                    BackgroundColor="White"
+                    TextColor="{x:StaticResource Primary}"
+                    Text="Signup"
+                    x:Name="btnSignUp"
+                    Clicked="btnSignUp_Clicked"
+                    VerticalOptions="End"
+                    Margin="15,0,15,0"
+                    />
+
+            <Label Text="Already have an account?"
+                   Style="{x:StaticResource MedBookLabel}"
+                   TextColor="{x:StaticResource HkBackground}"
+                   FontSize="18"
+                   HorizontalOptions="CenterAndExpand"
+                   VerticalOptions="End"
+                  Grid.Row="2"
+                   Margin="0,15,0,15"/>
+
+            <Button Style="{x:StaticResource ButtonStyleLogin}"
+                    Grid.Row="3"
+                    Text="Login"
+                    Margin="15,0,15,15"
+                    x:Name="btnLogin"
+                    Clicked="btnLogin_Clicked"
+                    VerticalOptions="End"/>
+
+        </Grid>-->
+    </ContentPage.Content>
+</ContentPage>

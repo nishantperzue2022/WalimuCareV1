@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             x:Class="HkMobileApp.Views.TheRealLoginPage"
+             Title="Login"
+             Style="{StaticResource MyContentPageStyle}"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" >
+            <Grid ColumnDefinitions="0.09*,0.95*"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="FillAndExpand" 
+                         HeightRequest="70" 
+                         BackgroundColor="{x:StaticResource Primary}"
+                        
+                        >
+
+                <Image x:Name="backImage" Source="backIcon.png" Grid.Column="0" >
+                    <Image.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="backImage_Tapped"/>
+                    </Image.GestureRecognizers>
+                </Image>
+
+                <Label Text="Login"
+                       VerticalOptions="CenterAndExpand" 
+                       HorizontalOptions="StartAndExpand" 
+                       FontSize="20" 
+                       TextColor="White" 
+                       Style="{x:StaticResource MedBookLabelNormal}"
+                       Margin="0"
+                       Grid.Column="1"/>
+
+            </Grid>
+
+            <!--<Label Text="Set up your account in a few easy steps"
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" FontSize="22" TextColor="{x:StaticResource Primary}" Style="{x:StaticResource MedBookLabelNormal}" />-->
+
+            <StackLayout Orientation="Vertical"
+                         HorizontalOptions="FillAndExpand" 
+                         VerticalOptions="StartAndExpand" 
+                         Padding="20,0,20,0"
+                        >
+                <inputLayout:SfTextInputLayout Hint="Phone Number" 
+                                               Style="{x:StaticResource ContainerOutline}"
+                                               HintLabelStyle="{x:StaticResource HintLabel}">
+                <Entry 
+                       Keyboard="Numeric" 
+                       Margin="0,10,0,10" 
+                       PlaceholderColor="{x:StaticResource Primary}" 
+                       Style="{x:StaticResource MedBookEntryNormal}"
+                       ClearButtonVisibility="WhileEditing"
+                       Text="{Binding PhoneNumber}"/>
+                </inputLayout:SfTextInputLayout>
+
+                <inputLayout:SfTextInputLayout Hint="Pin" 
+                                               EnablePasswordVisibilityToggle="True" 
+                                               Style="{x:StaticResource ContainerOutline}"
+                                               HintLabelStyle="{x:StaticResource HintLabel}"
+                                               ShowCharCount="true"
+                                               CharMaxLength="4"
+
+                                               >
+                    <Entry  
+                       Keyboard="Numeric"
+                       IsPassword="True"
+                       Margin="0,10,0,5" 
+                       PlaceholderColor="{x:StaticResource Primary}" 
+                       Style="{x:StaticResource MedBookEntryNormal}"
+                       ClearButtonVisibility="WhileEditing"
+                       MaxLength="10"
+                       Text="{Binding Pin}"
+                       />
+                </inputLayout:SfTextInputLayout>
+                <!--<Entry Placeholder="National ID" 
+                       Keyboard="Numeric"   
+                       Margin="0,10,0,10" 
+                       PlaceholderColor="{x:StaticResource Primary}" 
+                       Style="{x:StaticResource MedBookEntryNormal}"
+                       ClearButtonVisibility="WhileEditing"
+                       MaxLength="10"
+                       />-->
+
+                <Button Style="{x:StaticResource ButtonStyleLogin}" Text="Login" x:Name="btnogin" Margin="0,60,0,10" Command="{Binding LoginCommand}" IsEnabled="{Binding EnableLoginBtn}"   />
+
+                <ffimageloading:CachedImage CacheDuration= "90"
+                                                    RetryCount= "3"
+                                                    RetryDelay= "600"
+                                                    Source="hkloader2.gif"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    IsVisible="{Binding EnableLoader}"
+                                                    />
+                
+            
+            </StackLayout>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

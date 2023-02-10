@@ -1,0 +1,451 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customRender:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.MedicalCover.ViewWoteCoverBenefitsAndPremiumsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customRender="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    Title="Wote Premiums and Cover Details"
+    Style="{x:StaticResource MyContentPageStyle}"
+    SubTitle="View Premium charges and Cover benefit amounts">
+
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <customRender:CustomContentPageRenderer.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="MoneyLabel"
+                BasedOn="{StaticResource MedBookLabel}"
+                TargetType="Label">
+                <Setter Property="FontFamily" Value="VolteBold" />
+                <Setter Property="FontSize" Value="30" />
+
+            </Style>
+
+            <Style
+                x:Key="DependantsLabel"
+                BasedOn="{StaticResource MedBookLabel}"
+                TargetType="Label">
+                <Setter Property="FontFamily" Value="VolteSemiBold" />
+                <Setter Property="FontSize" Value="30" />
+
+            </Style>
+
+            <DataTemplate x:Key="myPremiumsDataTemplate">
+                <Frame
+                    Margin="10"
+                    BackgroundColor="{Binding ColorCode}"
+                    CornerRadius="10"
+                    HeightRequest="100"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <Label
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource MoneyLabel}"
+                            Text="{Binding Title}"
+                            TextColor="White"
+                            VerticalOptions="Start" />
+                        <BoxView
+                            Margin="0,0,0,20"
+                            BackgroundColor="White"
+                            HeightRequest="1"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Start" />
+
+
+                        <ListView
+                            HasUnevenRows="True"
+                            HorizontalOptions="FillAndExpand"
+                            ItemsSource="{Binding Premiums}"
+                            SelectionMode="None"
+                            SeparatorVisibility="None"
+                            VerticalOptions="FillAndExpand">
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell>
+                                        <Grid
+                                            Margin="0,30,0,30"
+                                            ColumnDefinitions="0.4*,0.1*,0.4*"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="StartAndExpand">
+
+                                            <Label
+                                                Grid.Column="0"
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource MoneyLabel}"
+                                                Text="{Binding PremiumAmount}"
+                                                TextColor="White"
+                                                VerticalOptions="CenterAndExpand" />
+
+                                            <BoxView
+                                                Grid.Column="1"
+                                                BackgroundColor="White"
+                                                HorizontalOptions="Center"
+                                                VerticalOptions="CenterAndExpand"
+                                                WidthRequest="1" />
+
+
+                                            <StackLayout
+                                                Grid.Column="2"
+                                                Orientation="Vertical"
+                                                Spacing="1">
+                                                <Label
+                                                    FontSize="Small"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MedBookLabel}"
+                                                    Text="{Binding BeneficiaryGroup}"
+                                                    TextColor="White"
+                                                    VerticalOptions="CenterAndExpand" />
+                                                <Label
+                                                    FontAttributes="Italic"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Style="{StaticResource MedBookLabelNormal}"
+                                                    TextColor="White"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="(Member plus " />
+                                                                <Span Text="{Binding NumberOfBeneficiariesMinusPrincipal}" />
+                                                                <Span Text=" family and/or friends)" />
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                            </StackLayout>
+
+
+
+
+
+
+                                        </Grid>
+                                    </ViewCell>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+
+
+
+
+
+
+                        <Label
+                            FontAttributes="Italic"
+                            FontSize="Micro"
+                            HorizontalOptions="CenterAndExpand"
+                            HorizontalTextAlignment="Center"
+                            Style="{x:StaticResource MedBookLabelNormal}"
+                            Text="*M + x means any individual + their family and/or their friends"
+                            TextColor="White" />
+
+
+
+                    </StackLayout>
+
+
+
+                </Frame>
+            </DataTemplate>
+        </ResourceDictionary>
+
+    </customRender:CustomContentPageRenderer.Resources>
+
+    <customRender:CustomContentPageRenderer.Content>
+
+        <StackLayout
+            Margin="10"
+            Padding="10"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+
+            <CarouselView
+                x:Name="corouselView"
+                Margin="0,0,0,0"
+                HorizontalOptions="FillAndExpand"
+                HorizontalScrollBarVisibility="Never"
+                IndicatorView="indicatorView"
+                ItemTemplate="{StaticResource myPremiumsDataTemplate}"
+                ItemsSource="{Binding WotePremiumCategories}"
+                VerticalOptions="FillAndExpand" />
+
+            <IndicatorView
+                x:Name="indicatorView"
+                HorizontalOptions="Center"
+                IndicatorColor="LightGray"
+                SelectedIndicatorColor="DarkGray" />
+
+            <material:MaterialButton
+                ButtonType="Elevated"
+                Command="{Binding GoToEnterNhifAndBasicDetailsCommand}"
+                Elevation="2"
+                HorizontalOptions="CenterAndExpand"
+                Style="{StaticResource ButtonMaterialFilledSecondary}"
+                Text="Continue"
+                TextTransform="None"
+                VerticalOptions="Center"
+                Visual="Material" />
+
+
+
+
+        </StackLayout>
+
+
+    </customRender:CustomContentPageRenderer.Content>
+</customRender:CustomContentPageRenderer>
+
+
+
+
+
+
+<!--<Frame
+                    BackgroundColor="#cd7f32"
+                    CornerRadius="10"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <Label
+                            FontSize="30"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource MoneyLabel}"
+                            Text="Bronze"
+                            TextColor="White"
+                            VerticalOptions="Start" />
+        <BoxView
+                            Margin="0,0,0,40"
+                            BackgroundColor="White"
+                            HeightRequest="1"
+                            HorizontalOptions="CenterAndExpand"
+                            VerticalOptions="Start" />
+
+
+        <Grid
+                            ColumnDefinitions="0.4*,0.1*,0.4*"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource MoneyLabel}"
+                                Text="40,000/="
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+
+            <StackLayout
+                                Grid.Column="2"
+                                Orientation="Vertical"
+                                Spacing="1">
+                <Label
+                                    FontSize="Small"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabel}"
+                                    Text="M + 3"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                <Label
+                                    FontAttributes="Italic"
+                                    FontSize="Micro"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabelNormal}"
+                                    Text="(Member plus 3 family and/or friends)"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+
+
+
+
+
+        </Grid>
+        <Grid
+                            ColumnDefinitions="0.4*,0.1*,0.4*"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource MoneyLabel}"
+                                Text="55,000/="
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+
+            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+            <StackLayout
+                                Grid.Column="2"
+                                Orientation="Vertical"
+                                Spacing="1">
+                <Label
+                                    FontSize="Small"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabel}"
+                                    Text="M + 5"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                <Label
+                                    FontAttributes="Italic"
+                                    FontSize="Micro"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabelNormal}"
+                                    Text="(Member plus 3 family and/or friends)"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        </Grid>
+        <Grid
+                            ColumnDefinitions="0.4*,0.1*,0.4*"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource MoneyLabel}"
+                                Text="65,000/="
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+
+            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+            <StackLayout
+                                Grid.Column="2"
+                                Orientation="Vertical"
+                                Spacing="1">
+                <Label
+                                    FontSize="Small"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabel}"
+                                    Text="M + 7"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                <Label
+                                    FontAttributes="Italic"
+                                    FontSize="Micro"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabelNormal}"
+                                    Text="(Member plus 3 family and/or friends)"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        </Grid>
+        <Grid
+                            ColumnDefinitions="0.4*,0.1*,0.4*"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+            <Label
+                                Grid.Column="0"
+                                HorizontalOptions="EndAndExpand"
+                                Style="{StaticResource MoneyLabel}"
+                                Text="75,000/="
+                                TextColor="White"
+                                VerticalOptions="CenterAndExpand" />
+
+            <BoxView
+                                Grid.Column="1"
+                                BackgroundColor="White"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand"
+                                WidthRequest="1" />
+            <StackLayout
+                                Grid.Column="2"
+                                Orientation="Vertical"
+                                Spacing="1">
+                <Label
+                                    FontSize="Small"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabel}"
+                                    Text="M + 10"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+                <Label
+                                    FontAttributes="Italic"
+                                    FontSize="Micro"
+                                    HorizontalOptions="StartAndExpand"
+                                    Style="{StaticResource MedBookLabelNormal}"
+                                    Text="(Member plus 3 family and/or friends)"
+                                    TextColor="White"
+                                    VerticalOptions="CenterAndExpand" />
+            </StackLayout>
+
+        </Grid>
+
+        <material:MaterialButton
+                            ButtonType="Elevated"
+                            Elevation="2"
+                            HorizontalOptions="CenterAndExpand"
+                            Style="{StaticResource ButtonMaterialFilledSecondary}"
+                            Text="Select Cover Type"
+                            TextTransform="None"
+                            VerticalOptions="Center"
+                            Visual="Material" />
+
+
+        <Label
+                            FontAttributes="Italic"
+                            FontSize="Micro"
+                            Style="{x:StaticResource MedBookLabelNormal}"
+                            Text="*M + x means any individual + their family and/or their friends"
+                            TextColor="White" />
+
+
+
+    </StackLayout>
+
+
+
+</Frame>-->

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.ShellPages.ShellTitlePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    HeightRequest="50"
+    Style="{StaticResource MyContentPageStyle}"
+    WidthRequest="100">
+    <Shell.TitleView>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.3*" />
+                <ColumnDefinition Width="0.7*" />
+            </Grid.ColumnDefinitions>
+
+            <Image
+                Grid.Row="0"
+                Grid.Column="0"
+                Source="john.jpg" />
+            <Label
+                FontSize="30"
+                HorizontalTextAlignment="Center"
+                Style="{x:StaticResource MedBookLabel}"
+                Text="Home"
+                VerticalTextAlignment="Center" />
+        </Grid>
+    </Shell.TitleView>
+</ContentPage>

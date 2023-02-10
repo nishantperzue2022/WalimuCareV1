@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customRender:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.Claims.TrackClaimPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customRender="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:rating="clr-namespace:Syncfusion.SfRating.XForms;assembly=Syncfusion.SfRating.XForms"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Track Hospital Visits"
+    Shell.NavBarIsVisible="False"
+    SubTitle="View all your hospital visits">
+    <!--<Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>-->
+
+    <ContentPage.Resources>
+
+
+        <DataTemplate x:Key="ClaimsDataTemplate">
+            <ViewCell>
+                <Frame
+                    Margin="5"
+                    Padding="0"
+                    CornerRadius="1"
+                    HasShadow="True">
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="FillAndExpand">
+
+                        <BoxView BackgroundColor="{x:StaticResource PrimaryLight1}" WidthRequest="4" />
+
+                        <Grid
+                            Padding="10"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="FillAndExpand">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+
+
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*" />
+                                <ColumnDefinition Width="0.5*" />
+                                <ColumnDefinition Width="0.1*" />
+                            </Grid.ColumnDefinitions>
+
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Hospital Name"
+                                TextColor="{x:StaticResource Primary}" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding hospital_name}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Visit Date"
+                                TextColor="{x:StaticResource Primary}" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding ClaimDate}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+
+
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Department"
+                                TextColor="{x:StaticResource Primary}" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding department_name}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+
+
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="MVC Number"
+                                TextColor="{x:StaticResource Primary}" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="{Binding claim_id}"
+                                TextColor="{x:StaticResource Secondary}" />
+
+
+
+                            <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                Text="Claim Amount"
+                                TextColor="{x:StaticResource Primary}" />-->
+                            <!--<Label
+                                Grid.Row="4"
+                                Grid.Column="1"
+                                FontSize="17"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                TextColor="{x:StaticResource Secondary}">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Ksh. " />
+                                        <Span Text="{Binding total, StringFormat='{}{0:N0}'}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+
+
+
+
+                        </Grid>
+                    </StackLayout>
+                </Frame>
+            </ViewCell>
+        </DataTemplate>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="0"
+                HasShadow="True"
+                HeightRequest="60"
+                VerticalOptions="StartAndExpand">
+                <StackLayout Padding="10" Orientation="Horizontal">
+
+                    <Image
+                        Margin="10,0,0,0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="backbutton.png"
+                        VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackButtonCommand}" CommandParameter="///HomePage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontSize="20"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="Hospital Visits"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                </StackLayout>
+
+            </Frame>
+
+            <StackLayout
+                Padding="10"
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsListViewVisible}"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+
+                <ListView
+                    HasUnevenRows="True"
+                    HorizontalOptions="FillAndExpand"
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    ItemTapped="ListView_ItemTapped"
+                    ItemTemplate="{StaticResource ClaimsDataTemplate}"
+                    ItemsSource="{Binding Claims}"
+                    RefreshCommand="{Binding RefreshCommand}"
+                    SelectionMode="None"
+                    SeparatorVisibility="None"
+                    VerticalOptions="FillAndExpand" />
+
+
+
+            </StackLayout>
+
+
+            <StackLayout IsVisible="{Binding IsEmptyIllustrationVisible}" VerticalOptions="CenterAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RefreshCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    Aspect="AspectFill"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="empty"
+                    VerticalOptions="CenterAndExpand" />
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="{Binding NoDataAvailableMessage}"
+                    TextColor="{StaticResource Primary}"
+                    VerticalOptions="End" />
+                <Label
+                    FontSize="Micro"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabelNormal}"
+                    Text="Tap to Refresh"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+
+
+
+
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</customRender:CustomContentPageRenderer>

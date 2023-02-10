@@ -1,0 +1,463 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<localShell:CustomShellRenderer
+    x:Class="HkMobileApp.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:blog="clr-namespace:HkMobileApp.Views.WellNessBlog"
+    xmlns:claims="clr-namespace:HkMobileApp.Views.Claims"
+    xmlns:dependants="clr-namespace:HkMobileApp.Views.dependants"
+    xmlns:doctor="clr-namespace:HkMobileApp.Views.doctor"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:hospitals="clr-namespace:HkMobileApp.Views.Hospitals"
+    xmlns:local="clr-namespace:HkMobileApp.Views"
+    xmlns:localShell="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:medicalCover="clr-namespace:HkMobileApp.Views.MedicalCover"
+    xmlns:others="clr-namespace:HkMobileApp.Views.Others"
+    xmlns:policy="clr-namespace:HkMobileApp.Views.Policy"
+    xmlns:shellPages="clr-namespace:HkMobileApp.Views.ShellPages"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Heathier Kenya"
+    Visual="Material">
+
+    <!--
+        The overall app visual hierarchy is defined here, along with navigation.
+        
+        https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/
+    -->
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{x:StaticResource Primary}" />
+                <Setter Property="Shell.ForegroundColor" Value="White" />
+                <Setter Property="Shell.TitleColor" Value="White" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{x:StaticResource Secondary}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF" />
+                <Setter Property="Shell.TabBarTitleColor" Value="White" />
+                <Setter Property="Shell.NavBarHasShadow" Value="False" />
+                <Setter Property="Shell.TabBarIsVisible" Value="False" />
+
+                <Setter Property="Shell.FlyoutVerticalScrollMode" Value="Auto" />
+                <Setter Property="Shell.Visual" Value="Material" />
+                <Setter Property="Shell.NavBarIsVisible" Value="True" />
+
+
+
+
+
+            </Style>
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="TabBar" />
+            <Style BasedOn="{StaticResource BaseStyle}" TargetType="FlyoutItem" />
+
+
+
+
+            <!--
+                Default Styles for all Flyout Items
+                https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyoutitem-and-menuitem-style-classes
+            -->
+            <Style Class="FlyoutItemLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="White" />
+            </Style>
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="FlyoutItemLayoutStyle"
+                TargetType="Layout">
+                <Setter Property="BackgroundColor" Value="LightBlue" />
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="White" />
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <!--
+                Custom Style you can apply to any Flyout Item
+            -->
+            <Style
+                ApplyToDerivedTypes="True"
+                Class="MenuItemLayoutStyle"
+                TargetType="Layout">
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter TargetName="FlyoutItemLabel" Property="Label.TextColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+
+            </Style>
+
+
+
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <!--
+        When the Flyout is visible this defines the content to display in the flyout.
+        FlyoutDisplayOptions="AsMultipleItems" will create a separate flyout item for each child element
+        https://docs.microsoft.com/dotnet/api/xamarin.forms.shellgroupitem.flyoutdisplayoptions?view=xamarin-forms
+    -->
+
+
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid
+                Margin="0,0,0,0"
+                Padding="0"
+                BackgroundColor="White"
+                HeightRequest="200">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.7*" />
+                    <RowDefinition Height="0.3*" />
+                </Grid.RowDefinitions>
+
+                <ffimageloading:CachedImage
+                    Grid.Column="0"
+                    Margin="0,5,0,0"
+                    CacheDuration="90"
+                    DownsampleToViewSize="true"
+                    RetryCount="3"
+                    RetryDelay="600"
+                    Source="{Binding ImageUrl}">
+                    <ffimageloading:CachedImage.Transformations>
+                        <fftransformations:CircleTransformation />
+                    </ffimageloading:CachedImage.Transformations>
+                </ffimageloading:CachedImage>
+
+
+                <!--<Image
+                    Grid.Row="0"
+                    Aspect="AspectFit"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="{Binding ImageUrl}"
+                    VerticalOptions="Center">
+                    <Image.Clip>
+                        <EllipseGeometry
+                            Center="50,70"
+                            RadiusX="50"
+                            RadiusY="50" />
+                    </Image.Clip>
+                </Image>-->
+                <StackLayout
+                    Grid.Row="1"
+                    Padding="0"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand">
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Text="{Binding FullName}"
+                        TextColor="{x:StaticResource Primary}"
+                        VerticalTextAlignment="Center" />
+
+                    <Label
+                        FontAttributes="Bold"
+                        HorizontalTextAlignment="Center"
+                        Text="View Profile"
+                        TextColor="{x:StaticResource Secondary}"
+                        VerticalTextAlignment="Center">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ViewProfileCommand}" />
+                        </Label.GestureRecognizers>
+                    </Label>
+
+                    <BoxView
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        Color="LightGray" />
+
+                </StackLayout>
+
+            </Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+
+    <Shell.ItemTemplate>
+        <DataTemplate>
+
+            <yummy:PancakeView
+                x:Name="panCakeView"
+                Margin="0,10,0,0"
+                CornerRadius="0,30,0,30">
+                <Grid
+                    x:Name="FlyoutItemLayout"
+                    ColumnSpacing="{x:OnPlatform UWP=0}"
+                    HeightRequest="{x:OnPlatform Android=40}"
+                    RowSpacing="{x:OnPlatform UWP=0}">
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="{x:OnPlatform Android=54, iOS=50, UWP=Auto}" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Image
+                        x:Name="FlyoutItemImage"
+                        HeightRequest="{x:OnPlatform Android=25,
+                                                     iOS=22,
+                                                     UWP=16}"
+                        HorizontalOptions="{x:OnPlatform Default=Center,
+                                                         UWP=Start}"
+                        Source="{Binding FlyoutIcon}"
+                        VerticalOptions="Center"
+                        WidthRequest="{x:OnPlatform Android=25,
+                                                    iOS=22,
+                                                    UWP=16}">
+                        <Image.Margin>
+                            <OnPlatform x:TypeArguments="Thickness">
+                                <OnPlatform.Platforms>
+                                    <On Platform="UWP" Value="12,0,12,0" />
+                                </OnPlatform.Platforms>
+                            </OnPlatform>
+                        </Image.Margin>
+                    </Image>
+                    <Label
+                        x:Name="FlyoutItemLabel"
+                        Grid.Column="1"
+                        FontAttributes="Bold"
+                        FontSize="{x:OnPlatform Android=15,
+                                                iOS=Small}"
+                        HorizontalOptions="{x:OnPlatform UWP=Start}"
+                        HorizontalTextAlignment="{x:OnPlatform UWP=Start}"
+                        Text="{Binding Title}"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalTextAlignment="Center">
+
+                        <Label.Triggers>
+                            <DataTrigger
+                                Binding="{Binding Source={x:Reference panCakeView}, Path=BackgroundColor}"
+                                TargetType="Label"
+                                Value="#40283289">
+                                <Setter Property="TextColor" Value="{StaticResource Secondary}" />
+                                <Setter Property="FontAttributes" Value="Bold" />
+                            </DataTrigger>
+                        </Label.Triggers>
+
+
+                    </Label>
+                </Grid>
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal" />
+                            <VisualState x:Name="Selected">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{x:OnPlatform Android=#40EA212A, iOS=#40EA212A}" />
+
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </VisualStateManager.VisualStateGroups>
+            </yummy:PancakeView>
+
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+
+            <Grid
+                x:Name="FlyoutItemLayout"
+                ColumnSpacing="{x:OnPlatform UWP=0}"
+                HeightRequest="{x:OnPlatform Android=40}"
+                RowSpacing="{x:OnPlatform UWP=0}">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="{x:OnPlatform Android=54, iOS=50, UWP=Auto}" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Image
+                    x:Name="FlyoutItemImage"
+                    HeightRequest="{x:OnPlatform Android=20,
+                                                 iOS=22,
+                                                 UWP=16}"
+                    HorizontalOptions="{x:OnPlatform Default=Center,
+                                                     UWP=Start}"
+                    Source="{Binding FlyoutIcon}"
+                    VerticalOptions="Center"
+                    WidthRequest="{x:OnPlatform Android=20,
+                                                iOS=22,
+                                                UWP=16}">
+                    <Image.Margin>
+                        <OnPlatform x:TypeArguments="Thickness">
+                            <OnPlatform.Platforms>
+                                <On Platform="UWP" Value="12,0,12,0" />
+                            </OnPlatform.Platforms>
+                        </OnPlatform>
+                    </Image.Margin>
+                </Image>
+                <Label
+                    x:Name="FlyoutItemLabel"
+                    Grid.Column="1"
+                    FontAttributes="Bold"
+                    FontSize="{x:OnPlatform Android=15,
+                                            iOS=Small}"
+                    HorizontalOptions="{x:OnPlatform UWP=Start}"
+                    HorizontalTextAlignment="{x:OnPlatform UWP=Start}"
+                    Text="{Binding Title}"
+                    TextColor="{StaticResource Secondary}"
+                    VerticalTextAlignment="Center" />
+            </Grid>
+
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+
+    <FlyoutItem FlyoutDisplayOptions="AsMultipleItems">
+
+
+
+        <ShellContent
+            Title="Dashboard"
+            ContentTemplate="{DataTemplate shellPages:HomePage}"
+            Icon="dashboardIcon.png"
+            Route="HomePage" />
+        <ShellContent
+            Title="Find Hospital"
+            ContentTemplate="{DataTemplate hospitals:FindHospitalPage}"
+            Icon="hospitalIcon.png"
+            Route="FindHospitalPage" />
+        <ShellContent
+            Title="Track Hospital Visits"
+            ContentTemplate="{DataTemplate claims:TrackClaimPage}"
+            Icon="hospitalbedicon.png"
+            Route="TrackClaimPage" />
+        <ShellContent
+            Title="Manage Dependants"
+            ContentTemplate="{DataTemplate dependants:ManageDependantsPage}"
+            Icon="dependantsIcon.png"
+            Route="ManageDependantsPage" />
+        <ShellContent
+            Title="Policy Details"
+            ContentTemplate="{DataTemplate policy:PolicyDetailsPage}"
+            Icon="policydocumentsicon.png"
+            Route="PolicyDocumentsPage" />
+        <ShellContent
+            Title="Policy Limits"
+            ContentTemplate="{DataTemplate policy:PolicyLimitsPage}"
+            Icon="policylimitsicon.png"
+            Route="PolicyDetailsPage" />
+
+        <!--<ShellContent
+            Title="Medical Cover Orders"
+            ContentTemplate="{DataTemplate medicalCover:MedicalCoverOrdersPage}"
+            Icon="buymedicalcover.png"
+            Route="MedicalCoverOrdersPage" />-->
+
+
+        <!--<ShellContent
+            Title="Wellness Blog"
+            ContentTemplate="{DataTemplate blog:BlogArticles}"
+            Icon="wellnessblog.png"
+            Route="BlogArticles" />-->
+
+        <ShellContent
+            Title="Reports Issues/Feedback"
+            ContentTemplate="{DataTemplate others:SubmitComplaintsPage}"
+            Icon="complaint.png"
+            Route="SubmitComplaintsPage" />
+
+        <ShellContent
+            Title="Request Callback"
+            ContentTemplate="{DataTemplate others:CallBacksPage}"
+            Icon="callbackicon.png"
+            Route="RequestCallBack" />
+
+
+        <ShellContent
+            Title="FAQs"
+            ContentTemplate="{DataTemplate others:FAQPage}"
+            Icon="faqs.png"
+            Route="FAQPage" />
+
+        <ShellContent
+            Title="Covid 19"
+            ContentTemplate="{DataTemplate others:Covid19Page}"
+            Icon="covid.png"
+            Route="Covid19Page" />
+
+        <ShellContent
+            Title="Contact Us"
+            ContentTemplate="{DataTemplate others:ContactUsPage}"
+            Icon="contactUsIcon.png"
+            Route="ContactUsPage" />
+
+
+    </FlyoutItem>
+
+
+    <!--  When the Flyout is visible this will be a menu item you can tie a click behavior to  -->
+
+    <MenuItem
+        Clicked="OnMenuItemClicked"
+        IconImageSource="LogoutIcon.png"
+        StyleClass="MenuItemLayoutStyle"
+        Text="Logout" />
+    <!--
+        This defines content that won't show up in a flyout menu. When this content is active the flyout menu won't be available.
+        This is useful for creating areas of the application where you don't want users to be able to navigate away from.
+        If you would like to navigate to this content you can do so by calling
+        await Shell.Current.GoToAsync("//LoginPage");
+    -->
+    <!--<ShellContent Route="LoginPage" Shell.FlyoutBehavior="Disabled" ContentTemplate="{DataTemplate local:LoginPage}" />-->
+
+    <!-- Optional Templates
+    // These may be provided inline as below or as separate classes.
+
+    // This header appears at the top of the Flyout.
+    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#flyout-header
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <Grid>ContentHere</Grid>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    // ItemTemplate is for ShellItems as displayed in a Flyout
+    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-flyoutitem-appearance
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Title, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    // MenuItemTemplate is for MenuItems as displayed in a Flyout
+    // https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/shell/flyout#define-menuitem-appearance
+    <Shell.MenuItemTemplate>
+        <DataTemplate>
+            <ContentView>
+                Bindable Properties: Text, Icon
+            </ContentView>
+        </DataTemplate>
+    </Shell.MenuItemTemplate>
+
+    -->
+
+
+
+</localShell:CustomShellRenderer>

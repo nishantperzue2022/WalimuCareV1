@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.MedicalCoverOrdersPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Your Orders">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+
+
+
+
+
+            <StackLayout IsVisible="{Binding IsEmptyIllustrationVisible}" VerticalOptions="CenterAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding GetOrdersCommand}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    Aspect="AspectFill"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="empty"
+                    VerticalOptions="CenterAndExpand" />
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="{Binding NoDataAvailableMessage}"
+                    TextColor="{StaticResource Primary}"
+                    VerticalOptions="End" />
+                <Label
+                    FontSize="Micro"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabelNormal}"
+                    Text="Tap to Refresh"
+                    VerticalOptions="End" />
+            </StackLayout>
+            <ListView
+                HasUnevenRows="true"
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                IsVisible="{Binding IsListViewVisible}"
+                ItemsSource="{Binding Orders}"
+                RefreshCommand="{Binding GetOrdersCommand}"
+                SeparatorVisibility="None">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="5"
+                                Padding="0"
+                                CornerRadius="5">
+                                <StackLayout Padding="5" Spacing="5">
+                                    <Grid
+                                        Margin="0"
+                                        ColumnDefinitions="0.2*,0.8*"
+                                        RowDefinitions="0.7*,0.3*"
+                                        RowSpacing="0">
+
+                                        <StackLayout
+                                            Grid.Row="0"
+                                            Grid.Column="1"
+                                            Margin="0"
+                                            Padding="2"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label
+                                                HorizontalOptions="Start"
+                                                Style="{StaticResource BomaLabel}"
+                                                Text="Order No #:"
+                                                TextColor="{StaticResource DefaultFontColor}"
+                                                VerticalTextAlignment="Center" />
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MedBookLabel}"
+                                                Text="{Binding orderNumber}" />
+
+                                            <Label
+                                                Padding="2"
+                                                BackgroundColor="Red"
+                                                FontSize="Micro"
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource BomaLabel}"
+                                                Text="Not Paid"
+                                                TextColor="White"
+                                                VerticalTextAlignment="Center" />
+
+                                        </StackLayout>
+
+                                        <Image
+                                            Grid.Row="0"
+                                            Grid.RowSpan="2"
+                                            Grid.Column="0"
+                                            HeightRequest="50"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Source="buymedicalcover.png"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <StackLayout
+                                            Grid.Row="1"
+                                            Grid.Column="1"
+                                            Margin="0,-5,0,0"
+                                            Padding="2"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Label
+                                                HorizontalOptions="StartAndExpand"
+                                                Style="{StaticResource MedBookLabelNormal}"
+                                                Text="{Binding medicalProductName}" />
+
+                                            <Label
+                                                HorizontalOptions="EndAndExpand"
+                                                Style="{StaticResource MedBookLabelNormal}"
+                                                Text="25th December 2021" />
+                                        </StackLayout>
+
+
+
+                                    </Grid>
+
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <Label
+                                            HorizontalOptions="EndAndExpand"
+                                            Style="{StaticResource BomaLabel}"
+                                            Text=""
+                                            TextColor="{StaticResource Secondary}">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="Ksh. " />
+                                                    <Span Text="{Binding amount, StringFormat='{}{0:N0}'}" />
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                    </StackLayout>
+
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

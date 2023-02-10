@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.ShellPages.TeleMedicineCallOrWebLinkPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:flex="clr-namespace:Flex.Controls;assembly=Flex"
+    xmlns:templates="clr-namespace:HkMobileApp.DataTemplates"
+    Title="Book Telemedicine">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MyBoxView" TargetType="BoxView">
+                <Setter Property="Margin" Value="60,0,15,0" />
+                <Setter Property="HorizontalOptions" Value="FillAndExpand" />
+                <Setter Property="HeightRequest" Value="1" />
+                <Setter Property="BackgroundColor" Value="{x:StaticResource PrimaryLight3}" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <StackLayout
+            Padding="10"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout VerticalOptions="StartAndExpand">
+
+                <Grid RowDefinitions="0.9*,0.1*" RowSpacing="0">
+
+                    <templates:LabelWithIcon
+                        x:Name="txtPhoneNumber"
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        CustomText="Call  +254 730 604 000"
+                        FontSize="20"
+                        ImageSize="20"
+                        ImageUrl="phoneIcon"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="CenterAndExpand">
+                        <templates:LabelWithIcon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PhoneNumber_Tapped" />
+                        </templates:LabelWithIcon.GestureRecognizers>
+
+                    </templates:LabelWithIcon>
+
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Style="{StaticResource MyBoxView}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+
+                <Grid RowDefinitions="0.9*,0.1*" RowSpacing="0">
+                    <templates:LabelWithIcon
+                        x:Name="txtPhoneNumber3"
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        CustomText="Call  0719 044 799 "
+                        FontSize="20"
+                        ImageSize="20"
+                        ImageUrl="phoneIcon"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="StartAndExpand">
+                        <templates:LabelWithIcon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PhoneNumber3_Tapped" />
+                        </templates:LabelWithIcon.GestureRecognizers>
+
+                    </templates:LabelWithIcon>
+
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Style="{StaticResource MyBoxView}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+
+                <Grid RowDefinitions="0.9*,0.1*" RowSpacing="0">
+                    <templates:LabelWithIcon
+                        x:Name="txtPhoneNumber4"
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        CustomText="Call  0719 044 999 "
+                        FontSize="20"
+                        ImageSize="20"
+                        ImageUrl="phoneIcon"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="StartAndExpand">
+                        <templates:LabelWithIcon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PhoneNumber4_Tapped" />
+                        </templates:LabelWithIcon.GestureRecognizers>
+
+                    </templates:LabelWithIcon>
+
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Style="{StaticResource MyBoxView}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+
+                <Grid RowDefinitions="0.9*,0.1*" RowSpacing="0">
+                    <templates:LabelWithIcon
+                        x:Name="txtPhoneNumber2"
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        CustomText="Call 1528"
+                        FontSize="20"
+                        ImageSize="20"
+                        ImageUrl="phoneIcon"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="StartAndExpand">
+                        <templates:LabelWithIcon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="PhoneNumber2_Tapped" />
+                        </templates:LabelWithIcon.GestureRecognizers>
+
+                    </templates:LabelWithIcon>
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Style="{StaticResource MyBoxView}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+
+
+                <Grid RowDefinitions="0.9*,0.1*" RowSpacing="0">
+                    <templates:LabelWithIcon
+                        x:Name="txtWebsite"
+                        Grid.Row="0"
+                        Margin="0,10,0,0"
+                        CustomText="Book Now"
+                        FontSize="20"
+                        ImageSize="20"
+                        ImageUrl="website"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="StartAndExpand">
+
+                        <templates:LabelWithIcon.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="Website_Tapped" />
+                        </templates:LabelWithIcon.GestureRecognizers>
+
+                    </templates:LabelWithIcon>
+                    <BoxView
+                        Grid.Row="1"
+                        HeightRequest="1"
+                        Style="{StaticResource MyBoxView}"
+                        VerticalOptions="StartAndExpand" />
+                </Grid>
+
+                <Label
+                    Margin="20,0,0,20"
+                    HorizontalTextAlignment="Start"
+                    Style="{x:StaticResource MedBookLabelNormal}"
+                    Text="Talk to a doctor from the comfort of your home via phone call or video. Book for appointment online and get a dedicated doctor provide personalized care."
+                    TextColor="{StaticResource Secondary}" />
+
+
+            </StackLayout>
+
+            <Label
+                Margin="20,0,0,20"
+                FontSize="Micro"
+                Style="{x:StaticResource MedBookLabelNormal}"
+                Text="*Telemedicine is offered in partnership with Bliss Healthcare Ltd."
+                TextColor="{StaticResource Secondary}"
+                VerticalOptions="EndAndExpand" />
+        </StackLayout>
+
+
+    </ContentPage.Content>
+</ContentPage>

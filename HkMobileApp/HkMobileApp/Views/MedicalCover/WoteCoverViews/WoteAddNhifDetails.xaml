@@ -1,0 +1,237 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.MedicalCover.WoteCoverViews.WoteAddNhifDetails"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:customrenderer="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:material="clr-namespace:XF.Material.Forms.UI;assembly=XF.Material"
+    Title="Boma Afya Cover"
+    SubTitle="Wote Afya Medical Scheme">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <customrenderer:CustomContentPageRenderer.Resources>
+        <ResourceDictionary />
+    </customrenderer:CustomContentPageRenderer.Resources>
+
+    <ContentPage.Content>
+        <ScrollView
+            Padding="20"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand"
+            VerticalScrollBarVisibility="Never">
+
+
+
+            <StackLayout
+                HorizontalOptions="FillAndExpand"
+                Spacing="0"
+                VerticalOptions="FillAndExpand">
+
+                <Label
+                    Style="{StaticResource BomaLabel}"
+                    Text="Gender *"
+                    VerticalOptions="CenterAndExpand"
+                    VerticalTextAlignment="Center" />
+
+                <StackLayout Margin="0,0,0,0" Orientation="Horizontal">
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding IsMaleSelected}"
+                        TextColor="{StaticResource Secondary}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="Male"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                    <RadioButton
+                        HorizontalOptions="Start"
+                        IsChecked="{Binding IsFeMaleSelected}"
+                        VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="Female"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding GenderHasError}">
+                    <Label Text="Please Select Gender" TextColor="Red" />
+                </StackLayout>
+
+
+
+
+                <Label
+                    Margin="0,20,0,0"
+                    Style="{StaticResource BomaLabel}"
+                    Text="Full Name *" />
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Enter your Full name"
+                    HasError="{Binding FullNameHasError}"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Chat"
+                        Style="{StaticResource MyEditor}"
+                        Text="{Binding FullName}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </inputLayout:SfTextInputLayout>
+
+                <Label Style="{StaticResource BomaLabel}" Text="Phone Number *" />
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Enter your Phone Number"
+                    HasError="{Binding PhoneNumberHasError}"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Telephone"
+                        Style="{StaticResource MyEditor}"
+                        Text="{Binding PhoneNumber}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </inputLayout:SfTextInputLayout>
+
+
+                <Label Style="{StaticResource BomaLabel}" Text="Nhif Number" />
+
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Enter your NHIF Number"
+                    HasError="{Binding NhifNumberHasError}"
+                    HorizontalOptions="FillAndExpand"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Numeric"
+                        Style="{StaticResource MyEditor}"
+                        Text="{Binding NhifNumber}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </inputLayout:SfTextInputLayout>
+
+
+                <Label Style="{StaticResource BomaLabel}" Text="Postal Code *" />
+
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Select  Postal Code"
+                    HasError="{Binding SelectedPostalCodeHasError}"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <!--<combobox:SfComboBox
+                        Margin="0"
+                        DataSource="{Binding PostalCodes}"
+                        DisplayMemberPath="code"
+                        HeightRequest="45"
+                        SelectedItem="{Binding SelectedPostalCode}"
+                        VerticalOptions="CenterAndExpand" />-->
+                </inputLayout:SfTextInputLayout>
+
+                <Label Style="{StaticResource BomaLabel}" Text="Postal Address *" />
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Enter  Postal Address"
+                    HasError="{Binding SelectedPostalCodeHasError}"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Chat"
+                        Style="{StaticResource MyEditor}"
+                        Text="{Binding PostalAddress}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </inputLayout:SfTextInputLayout>
+
+                <Label Style="{StaticResource BomaLabel}" Text="Physical Address *" />
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Enter  Physical Address"
+                    HasError="{Binding PhysicalAddressHasError}"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <Entry
+                        HorizontalOptions="FillAndExpand"
+                        Keyboard="Chat"
+                        Style="{StaticResource MyEditor}"
+                        Text="{Binding PhysicalAddress}"
+                        VerticalOptions="CenterAndExpand"
+                        VerticalTextAlignment="Center" />
+                </inputLayout:SfTextInputLayout>
+
+                <Label Style="{StaticResource BomaLabel}" Text="County Of Residence *" />
+                <inputLayout:SfTextInputLayout
+                    ErrorText="Please Select  County of Residence"
+                    HasError="{Binding SelectedCountyHasError}"
+                    Style="{x:StaticResource BomaContainerOutline}">
+                    <!--<combobox:SfComboBox
+                        Margin="0"
+                        DataSource="{Binding Counties}"
+                        DisplayMemberPath="county"
+                        HeightRequest="45"
+                        SelectedItem="{Binding SelectedCounty}"
+                        VerticalOptions="CenterAndExpand">
+
+                    </combobox:SfComboBox>-->
+                </inputLayout:SfTextInputLayout>
+
+
+                <StackLayout Margin="0,20,0,0" Orientation="Horizontal">
+                    <CheckBox IsChecked="{Binding AgreeToTermsAndConditions}" VerticalOptions="CenterAndExpand" />
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="Agree to Terms and Conditions"
+                        VerticalOptions="CenterAndExpand" />
+                </StackLayout>
+
+                <Label
+                    HorizontalOptions="StartAndExpand"
+                    Style="{StaticResource BomaLabel}"
+                    Text="All Fields with  *  are mandatory"
+                    VerticalOptions="CenterAndExpand" />
+
+
+                <material:MaterialButton
+                    Margin="0,40,0,0"
+                    ButtonType="Elevated"
+                    Command="{Binding UploadDocumentsPageCommand}"
+                    HorizontalOptions="EndAndExpand"
+                    IsEnabled="{Binding EnableProceedButton}"
+                    Style="{StaticResource ButtonFilledSecondary}"
+                    Text="Proceed"
+                    TextTransform="None"
+                    VerticalOptions="Center"
+                    Visual="Material" />
+
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</customrenderer:CustomContentPageRenderer>

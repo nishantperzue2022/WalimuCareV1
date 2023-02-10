@@ -1,0 +1,264 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.Policy.PolicyLimitsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:chart="clr-namespace:Syncfusion.SfChart.XForms;assembly=Syncfusion.SfChart.XForms"
+    xmlns:customrenderer="clr-namespace:HkMobileApp.CustomRenderer"
+    Title="Policy Limits"
+    SubTitle="View your available limits and how you spent your cover">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <chart:ChartColorCollection x:Key="MyColors">
+                <Color>#EA212A</Color>
+                <Color>#999999</Color>
+            </chart:ChartColorCollection>
+
+
+
+        </ResourceDictionary>
+
+
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+
+        <StackLayout
+            Padding="5"
+            HorizontalOptions="FillAndExpand"
+            VerticalOptions="FillAndExpand">
+
+
+            <StackLayout IsVisible="{Binding IsEmptyIllustrationVisible}" VerticalOptions="CenterAndExpand">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RefreshListView}" />
+                </StackLayout.GestureRecognizers>
+                <Image
+                    Aspect="AspectFill"
+                    HorizontalOptions="CenterAndExpand"
+                    Source="empty"
+                    VerticalOptions="CenterAndExpand" />
+
+                <Label
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="{Binding NoDataAvailableMessage}"
+                    TextColor="{StaticResource Primary}"
+                    VerticalOptions="End" />
+                <Label
+                    FontSize="Micro"
+                    HorizontalOptions="CenterAndExpand"
+                    Style="{StaticResource MedBookLabelNormal}"
+                    Text="Tap to Refresh"
+                    VerticalOptions="End" />
+            </StackLayout>
+
+
+            <Grid
+                HorizontalOptions="FillAndExpand"
+                IsVisible="{Binding IsListViewVisible}"
+                VerticalOptions="FillAndExpand">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="0.05*" />
+                    <RowDefinition Height="0.95*" />
+
+                </Grid.RowDefinitions>
+
+                <Label
+                    Grid.Row="0"
+                    Margin="8,0,0,0"
+                    FontSize="18"
+                    Style="{x:StaticResource MedBookLabel}"
+                    Text="Benefits"
+                    TextColor="{x:StaticResource Secondary}" />
+                <StackLayout Grid.Row="1">
+                    <ListView
+                        HasUnevenRows="True"
+                        HorizontalOptions="FillAndExpand"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        ItemsSource="{Binding PolicyDetails}"
+                        RefreshCommand="{Binding RefreshListView}"
+                        SelectionMode="None"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout
+                                        HeightRequest="200"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+
+                                        <Frame
+                                            Margin="5"
+                                            Padding="0"
+                                            CornerRadius="0"
+                                            HasShadow="True"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <StackLayout
+                                                Padding="0"
+                                                HorizontalOptions="StartAndExpand"
+                                                VerticalOptions="FillAndExpand">
+
+
+
+
+                                                <Label
+                                                    Margin="5"
+                                                    FontSize="16"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    TextColor="{x:StaticResource Primary}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding benefitName}" />
+                                                                <Span Text=" - " />
+                                                                <Span Text="{Binding benefitAmount, StringFormat='Ksh. {0:N0}'}" />
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <BoxView BackgroundColor="LightGray" HeightRequest="1" />
+
+                                                <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                                    <chart:SfChart HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+
+                                                        <chart:SfChart.Legend>
+
+                                                            <chart:ChartLegend
+                                                                BackgroundColor="White"
+                                                                CornerRadius="10"
+                                                                DockPosition="Right">
+                                                                <chart:ChartLegend.LabelStyle />
+                                                            </chart:ChartLegend>
+
+                                                        </chart:SfChart.Legend>
+
+
+
+                                                        <chart:SfChart.PrimaryAxis>
+
+                                                            <chart:CategoryAxis>
+
+                                                                <chart:CategoryAxis.Title>
+
+                                                                    <chart:ChartAxisTitle Text="Name" />
+
+                                                                </chart:CategoryAxis.Title>
+
+                                                            </chart:CategoryAxis>
+
+                                                        </chart:SfChart.PrimaryAxis>
+
+                                                        <chart:SfChart.SecondaryAxis>
+
+                                                            <chart:NumericalAxis>
+
+                                                                <chart:NumericalAxis.Title>
+
+                                                                    <chart:ChartAxisTitle Text="Height (in cm)" />
+
+                                                                </chart:NumericalAxis.Title>
+
+                                                            </chart:NumericalAxis>
+
+                                                        </chart:SfChart.SecondaryAxis>
+
+                                                        <chart:SfChart.Series>
+
+                                                            <chart:DoughnutSeries
+                                                                CircularCoefficient="1"
+                                                                DataMarkerPosition="OutsideExtended"
+                                                                DoughnutCoefficient="0.8"
+                                                                ItemsSource="{Binding ChartData}"
+                                                                XBindingPath="Name"
+                                                                YBindingPath="Amount">
+                                                                <chart:DoughnutSeries.DataMarker>
+                                                                    <chart:ChartDataMarker>
+                                                                        <chart:ChartDataMarker.LabelStyle>
+                                                                            <chart:DataMarkerLabelStyle LabelFormat="Ksh ###,###" LabelPosition="Center" />
+                                                                        </chart:ChartDataMarker.LabelStyle>
+                                                                    </chart:ChartDataMarker>
+                                                                </chart:DoughnutSeries.DataMarker>
+
+
+                                                                <chart:DoughnutSeries.ColorModel>
+                                                                    <chart:ChartColorModel CustomBrushes="{StaticResource MyColors}" Palette="Custom" />
+                                                                </chart:DoughnutSeries.ColorModel>
+
+                                                            </chart:DoughnutSeries>
+
+
+                                                        </chart:SfChart.Series>
+
+
+
+                                                    </chart:SfChart>
+
+                                                </StackLayout>
+                                            </StackLayout>
+                                        </Frame>
+
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+
+                    </ListView>
+                    <!--<Button
+                        Margin="5,0,5,0"
+                        Clicked="Button_Clicked"
+                        Style="{StaticResource ButtonMaterialFilledPrimary}"
+                        Text="Download Bronchure" />-->
+
+                </StackLayout>
+
+
+
+            </Grid>
+
+
+
+
+
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+
+
+</customrenderer:CustomContentPageRenderer>
+

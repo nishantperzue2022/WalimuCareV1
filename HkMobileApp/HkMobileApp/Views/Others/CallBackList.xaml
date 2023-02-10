@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.Others.CallBackList"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Callback list">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Label
+                    Margin="5"
+                    Style="{StaticResource MedBookLabel}"
+                    Text="Your previous call back requests"
+                    TextColor="{StaticResource Primary}" />
+                <Frame HorizontalOptions="FillAndExpand" VerticalOptions="EndAndExpand">
+
+                    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                        <!--<syncfusion:SfDataGrid
+                                x:Name="dataGrid"
+                                ColumnSizer="Star"
+                                HorizontalOptions="FillAndExpand"
+                                ItemsSource="{Binding CallBackRequests}"
+                                VerticalOptions="FillAndExpand" />-->
+
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

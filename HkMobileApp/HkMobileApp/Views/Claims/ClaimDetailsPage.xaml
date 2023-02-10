@@ -1,0 +1,343 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customRender:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.Claims.ClaimDetailsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customRender="clr-namespace:HkMobileApp.CustomRenderer"
+    Title="Hospital Visit Details"
+    Shell.NavBarIsVisible="False"
+    SubTitle="View Details">
+    <!--<Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Secondary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>-->
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="ClaimSmallLabel"
+                BasedOn="{StaticResource MedBookLabelNormal}"
+                TargetType="Label">
+
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{StaticResource Primary}" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Start" />
+
+
+            </Style>
+
+            <Style
+                x:Key="ClaimLargeLabel"
+                BasedOn="{StaticResource MedBookLabelNormal}"
+                TargetType="Label">
+                <Setter Property="Margin" Value="0" />
+                <Setter Property="FontSize" Value="15" />
+                <Setter Property="TextColor" Value="{StaticResource Secondary}" />
+                <Setter Property="VerticalTextAlignment" Value="Center" />
+                <Setter Property="VerticalOptions" Value="Start" />
+
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <StackLayout>
+            <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Frame
+                    Padding="0"
+                    AbsoluteLayout.LayoutBounds="0,0,1,0.09"
+                    AbsoluteLayout.LayoutFlags="All"
+                    BackgroundColor="{StaticResource Primary}"
+                    CornerRadius="0"
+                    HasShadow="True">
+                    <StackLayout Padding="10" Orientation="Horizontal">
+
+                        <Image
+                            Margin="10,0,0,0"
+                            HeightRequest="20"
+                            HorizontalOptions="Start"
+                            Source="backbutton.png"
+                            VerticalOptions="CenterAndExpand">
+                            <Image.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding BackButtonCommand}" CommandParameter="TrackClaimPage" />
+                            </Image.GestureRecognizers>
+                        </Image>
+
+                        <Label
+                            Margin="10,0,0,0"
+                            FontSize="20"
+                            HorizontalOptions="StartAndExpand"
+                            Style="{StaticResource MedBookLabel}"
+                            Text="Visit Details"
+                            TextColor="White"
+                            VerticalOptions="CenterAndExpand" />
+
+                    </StackLayout>
+
+                </Frame>
+                <StackLayout
+                    Margin="0,50,0,0"
+                    Padding="20"
+                    AbsoluteLayout.LayoutBounds="0,0,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand">
+
+
+
+                    <StackLayout>
+
+                        <Grid ColumnDefinitions="0.35*,0.65*">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Beneficiary" />
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.FullName}" />
+
+
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Hospital Name" />
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.HospitalName}" />
+
+
+
+
+
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Department" />
+                            <Label
+                                Grid.Row="2"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.Department}" />
+
+
+
+
+
+
+
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Visit Date" />
+                            <Label
+                                Grid.Row="3"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.HospitalVisitDate}" />
+
+
+
+
+
+
+
+                            <BoxView
+                                Grid.Row="4"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand" />
+
+
+
+
+
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="MVC Number" />
+                            <Label
+                                Grid.Row="5"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.ClaimNumber}" />
+
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Claim Date" />
+                            <Label
+                                Grid.Row="6"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.ClaimCreatedAt}" />
+
+
+
+                            <!--<Label
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Claim Amount" />-->
+                            <!--<Label
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Ksh. " />
+                                            <Span Text="{Binding SelectedClaim.ClaimAmount, StringFormat='{}{0:N0}'}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Claim Status" />
+                            <Label
+                                Grid.Row="7"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.Status}"
+                                TextColor="{Binding SelectedClaim.IsApprovedColor}" />
+
+                            <!--<Label
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Approved Amount" />
+                            <Label
+                                Grid.Row="9"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Ksh. " />
+                                            <Span Text="{Binding SelectedClaim.ApprvAmount, StringFormat='{}{0:N0}'}" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+
+                            <BoxView
+                                Grid.Row="8"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="2"
+                                BackgroundColor="LightGray"
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                VerticalOptions="CenterAndExpand" />
+
+                            <Label
+                                Grid.Row="9"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Diagnosis" />
+                            <Label
+                                Grid.Row="9"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.MbrDiagnosis}" />
+
+
+
+                            <Label
+                                Grid.Row="10"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Investigation" />
+                            <Label
+                                Grid.Row="10"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.InvestigationDescription}" />
+
+
+
+                            <Label
+                                Grid.Row="11"
+                                Grid.Column="0"
+                                Style="{StaticResource ClaimSmallLabel}"
+                                Text="Prescription" />
+                            <Label
+                                Grid.Row="11"
+                                Grid.Column="1"
+                                Style="{x:StaticResource ClaimLargeLabel}"
+                                Text="{Binding SelectedClaim.PrescriptionDescription}" />
+
+
+                        </Grid>
+
+
+                    </StackLayout>
+                </StackLayout>
+
+
+            </AbsoluteLayout>
+        </StackLayout>
+
+
+
+    </ContentPage.Content>
+</customRender:CustomContentPageRenderer>

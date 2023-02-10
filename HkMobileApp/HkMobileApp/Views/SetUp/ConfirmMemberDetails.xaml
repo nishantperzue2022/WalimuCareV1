@@ -1,0 +1,245 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.ConfirmMemberDetails"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    NavigationPage.HasNavigationBar="False"
+    Style="{StaticResource MyContentPageStyle}">
+    <ContentPage.Content>
+
+        <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+            <StackLayout
+                BackgroundColor="{x:StaticResource Primary}"
+                HeightRequest="70"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Horizontal"
+                VerticalOptions="FillAndExpand">
+
+                <Label
+                    Margin="20"
+                    FontSize="20"
+                    HorizontalOptions="StartAndExpand"
+                    Style="{x:StaticResource MedBookLabelNormal}"
+                    Text="Confirm Details"
+                    TextColor="White"
+                    VerticalOptions="CenterAndExpand" />
+
+            </StackLayout>
+
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        Orientation="Horizontal"
+                        VerticalOptions="StartAndExpand">
+
+                        <Frame
+                            BorderColor="White"
+                            CornerRadius="10"
+                            HasShadow="True"
+                            HorizontalOptions="FillAndExpand"
+                            VerticalOptions="StartAndExpand">
+
+                            <StackLayout Orientation="Vertical">
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                        <RowDefinition Height="20" />
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Name"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="0"
+                                        Grid.Column="1"
+                                        FontSize="Medium"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding FullName}"
+                                        TextColor="Black" />
+
+
+
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Member No"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="1"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding MemberNumber}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Gender"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="2"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding Gender}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Phone"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="3"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding PhoneNumber}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Row="4"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Email"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="4"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding Email}"
+                                        TextColor="Black" />
+
+                                    <Label
+                                        Grid.Row="5"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Job Group"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="5"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding JobGroup}"
+                                        TextColor="Black" />
+
+
+                                    <Label
+                                        Grid.Row="6"
+                                        Grid.Column="0"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabel}"
+                                        Text="Date of Birth"
+                                        TextColor="Black" />
+                                    <Label
+                                        Grid.Row="6"
+                                        Grid.Column="1"
+                                        FontSize="18"
+                                        Style="{x:StaticResource MedBookLabelNormal}"
+                                        Text="{Binding DateOfBirth}"
+                                        TextColor="Black" />
+
+                                </Grid>
+                            </StackLayout>
+
+                        </Frame>
+                    </StackLayout>
+
+                    <Grid
+                        Margin="0,0,0,0"
+                        Padding="20,0,20,0"
+                        HorizontalOptions="FillAndExpand"
+                        RowDefinitions="0.3*,0.3*,0.3*"
+                        VerticalOptions="Start">
+                        <StackLayout
+                            Grid.Row="0"
+                            Margin="0,0,0,50"
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Horizontal">
+                            <Label
+                                FontSize="18"
+                                HorizontalOptions="StartAndExpand"
+                                Style="{x:StaticResource MedBookLabelNormal}"
+                                TextColor="{x:StaticResource Primary}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center">
+
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Agree to Terms and">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowTermsAndConditionsCommand}" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                        <Span Text=" Privacy Policy">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding ShowPrivacyPoliciesCommand}" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString>
+                                </Label.FormattedText>
+
+
+                            </Label>
+                            <Switch
+                                x:Name="swtchAcceptTerms"
+                                x:Uid="swtchAcceptTerms"
+                                HorizontalOptions="EndAndExpand"
+                                IsToggled="{Binding IsTermsAndConditionsAccepted}" />
+                        </StackLayout>
+
+
+                        <Button
+                            x:Name="btnContinue"
+                            Grid.Row="1"
+                            Command="{Binding ConfirmDetails}"
+                            HorizontalOptions="FillAndExpand"
+                            IsEnabled="{Binding IsTermsAndConditionsAccepted}"
+                            Style="{x:StaticResource ButtonStyleLogin}"
+                            Text="Continue"
+                            VerticalOptions="Start" />
+
+
+                        <Button
+                            x:Name="btnIncorrectDetails"
+                            Grid.Row="2"
+                            Margin="0,0,0,0"
+                            BackgroundColor="Red"
+                            Command="{Binding InCorrectDetails}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{x:StaticResource ButtonStyleLogin}"
+                            Text="Incorrect Details ?"
+                            VerticalOptions="CenterAndExpand" />
+                    </Grid>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

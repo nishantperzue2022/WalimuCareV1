@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.Others.FeedbackPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:fftransformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Submit Feedback"
+    BackgroundColor="{x:StaticResource HkBackground}">
+
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Secondary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Resources>
+        <syncfusion:SfRadioGroupKey x:Key="FeedbackType" />
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout
+                Margin="0,0,0,0"
+                BackgroundColor="{x:StaticResource SecondaryLight3}"
+                HeightRequest="60"
+                HorizontalOptions="StartAndExpand">
+
+                <Grid HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="0.1*" />
+                        <ColumnDefinition Width="0.8*" />
+                        <ColumnDefinition Width="0.1*" />
+                    </Grid.ColumnDefinitions>
+
+
+
+                    <Label
+                        Grid.Column="1"
+                        FontSize="18"
+                        HorizontalTextAlignment="Center"
+                        Style="{x:StaticResource MedBookLabelNormal}"
+                        Text="Your feedback matters"
+                        TextColor="{x:StaticResource Secondary}"
+                        VerticalTextAlignment="Center" />
+
+                </Grid>
+
+
+            </StackLayout>
+
+            <Frame
+                Margin="15"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <StackLayout
+                    Margin="0"
+                    Padding="5"
+                    HorizontalOptions="FillAndExpand"
+                    Orientation="Vertical"
+                    VerticalOptions="FillAndExpand">
+
+                    <StackLayout
+                        Padding="10"
+                        HorizontalOptions="FillAndExpand"
+                        VerticalOptions="StartAndExpand">
+
+                        <Grid
+                            HeightRequest="60"
+                            HorizontalOptions="StartAndExpand"
+                            VerticalOptions="StartAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="0.4*" />
+                                <ColumnDefinition Width="0.5*" />
+
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="*" />
+                            </Grid.RowDefinitions>
+
+                            <ffimage:CachedImage
+                                Grid.RowSpan="2"
+                                Grid.Column="0"
+                                CacheDuration="90"
+                                HeightRequest="60"
+                                RetryCount="3"
+                                RetryDelay="600"
+                                Source="{Binding UserIcon}">
+                                <ffimage:CachedImage.Transformations>
+                                    <fftransformations:CircleTransformation />
+                                </ffimage:CachedImage.Transformations>
+                            </ffimage:CachedImage>
+
+                            <Label
+                                Grid.Row="0"
+                                Grid.Column="1"
+                                Margin="-20,-20,0,0"
+                                FontSize="18"
+                                Style="{x:StaticResource MedBookLabel}"
+                                Text="{Binding FullName}"
+                                TextColor="{x:StaticResource Primary}"
+                                VerticalTextAlignment="End" />
+
+                            <Label
+                                Grid.Row="1"
+                                Grid.Column="1"
+                                Style="{x:StaticResource MedBookLabel}"
+                                Text="{Binding Location}"
+                                VerticalTextAlignment="Start" />
+
+                        </Grid>
+
+                        <!--<BoxView HeightRequest="0.5" HorizontalOptions="FillAndExpand" Color="{x:StaticResource SecondaryLight}"/>-->
+                        <Label
+                            Margin="5,20,0,0"
+                            FontSize="15"
+                            Style="{x:StaticResource MedBookLabel}"
+                            Text="Search Hospital" />
+                        <!--<autocomplete:SfAutoComplete
+                            x:Name="autoComplete"
+                            DataSource="{Binding Clinics}"
+                            DisplayMemberPath="ClinicName"
+                            HeightRequest="40"
+                            SelectedItem="{Binding SelectedFacility}"
+                            SuggestionMode="ContainsWithCaseSensitive" />-->
+                        <!--<inputLayout:SfTextInputLayout Hint="Select a facility"
+                                               Style="{x:StaticResource ContainerOutline}" IsHintAlwaysFloated="True" >
+
+                            <combobox:SfComboBox HeightRequest="50"  SelectedItem="{Binding SelectedFacility}"  DataSource="{Binding Facilities}" >
+
+                            </combobox:SfComboBox>
+                        </inputLayout:SfTextInputLayout>-->
+
+
+                        <Label
+                            Margin="5,20,0,0"
+                            Style="{x:StaticResource MedBookLabel}"
+                            Text="Feeback Type" />
+
+
+                        <FlexLayout
+                            AlignContent="Start"
+                            AlignItems="Start"
+                            Wrap="Wrap">
+                            <syncfusion:SfRadioButton
+                                CheckedColor="{StaticResource Primary}"
+                                GroupKey="{StaticResource FeedbackType}"
+                                Text="Suggestion"
+                                UncheckedColor="Gray" />
+                            <syncfusion:SfRadioButton
+                                CheckedColor="{StaticResource Primary}"
+                                GroupKey="{StaticResource FeedbackType}"
+                                Text="Complaint"
+                                UncheckedColor="Gray" />
+                        </FlexLayout>
+
+
+                        <inputLayout:SfTextInputLayout
+                            Hint="Describe Feedback"
+                            IsHintAlwaysFloated="True"
+                            Style="{x:StaticResource ContainerOutline}">
+                            <Editor HeightRequest="100" Text="{Binding Reason}" />
+                        </inputLayout:SfTextInputLayout>
+
+
+                        <Button
+                            Command="{Binding SubmitFeedback}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{x:StaticResource ButtonStyleLogin}"
+                            Text="Submit"
+                            VerticalOptions="StartAndExpand" />
+                    </StackLayout>
+
+
+
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

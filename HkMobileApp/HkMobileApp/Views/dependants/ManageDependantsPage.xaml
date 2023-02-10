@@ -1,0 +1,270 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customRender:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.dependants.ManageDependantsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customRender="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:shimmer="clr-namespace:Syncfusion.XForms.Shimmer;assembly=Syncfusion.Core.XForms"
+    xmlns:yummy="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="Registered Dependents">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <!--<Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />-->
+        </StackLayout>
+    </Shell.TitleView>
+
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="shimmerBoxView" TargetType="BoxView">
+                <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                <Setter Property="HorizontalOptions" Value="Start" />
+                <Setter Property="VerticalOptions" Value="Start" />
+                <Setter Property="HeightRequest" Value="15" />
+                <Setter Property="WidthRequest" Value="250" />
+
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+
+    <ContentPage.Content>
+        <StackLayout
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+
+            <StackLayout
+                Padding="5"
+                HorizontalOptions="FillAndExpand"
+                Orientation="Vertical"
+                VerticalOptions="FillAndExpand">
+                <AbsoluteLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+
+
+                    <Image
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        Aspect="AspectFit"
+                        IsVisible="{Binding IsEmptyIllustrationVisible}"
+                        Source="empty" />
+
+                    <Label
+                        AbsoluteLayout.LayoutBounds="0.5,0.8"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        HorizontalOptions="CenterAndExpand"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="{Binding NoData}"
+                        TextColor="{StaticResource Primary}" />
+
+                    <Label
+                        AbsoluteLayout.LayoutBounds="0.5,0.83"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        FontSize="Micro"
+                        HorizontalOptions="CenterAndExpand"
+                        IsVisible="{Binding IsPullToRefreshTextVisible}"
+                        Style="{StaticResource MedBookLabelNormal}"
+                        Text="Pull to Refresh" />
+
+
+
+
+                    <ListView
+                        Margin="5,0,5,5"
+                        AbsoluteLayout.LayoutBounds="0,0,1,1"
+                        AbsoluteLayout.LayoutFlags="All"
+                        HasUnevenRows="True"
+                        IsPullToRefreshEnabled="True"
+                        IsRefreshing="{Binding IsRefreshing}"
+                        IsVisible="true"
+                        ItemsSource="{Binding Dependants}"
+                        RefreshCommand="{Binding RefreshCommand}"
+                        SelectionMode="None"
+                        SeparatorVisibility="None"
+                        VerticalOptions="FillAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+
+                                    <Frame
+                                        Margin="5"
+                                        Padding="0"
+                                        CornerRadius="0"
+                                        HasShadow="True">
+                                        <StackLayout
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="FillAndExpand">
+                                            <BoxView BackgroundColor="{StaticResource Primary}" WidthRequest="4" />
+                                            <Grid
+                                                Padding="5"
+                                                HorizontalOptions="FillAndExpand"
+                                                VerticalOptions="FillAndExpand">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                    <RowDefinition Height="*" />
+                                                </Grid.RowDefinitions>
+
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="0.000000000000001*" />
+                                                    <ColumnDefinition Width="0.3*" />
+                                                    <ColumnDefinition Width="0.6*" />
+
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label IsVisible="false" Text="{Binding Id}" />
+
+
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="1"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="Name"
+                                                    TextColor="{x:StaticResource Primary}" />
+
+                                                <Label
+                                                    Grid.Row="0"
+                                                    Grid.Column="2"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="{Binding FullName}"
+                                                    TextColor="{x:StaticResource Secondary}" />
+
+
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="Relationship"
+                                                    TextColor="{x:StaticResource Primary}" />
+                                                <Label
+                                                    Grid.Row="1"
+                                                    Grid.Column="2"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="{Binding Relationship}"
+                                                    TextColor="{x:StaticResource Secondary}" />
+
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="1"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="Gender"
+                                                    TextColor="{x:StaticResource Primary}" />
+                                                <Label
+                                                    Grid.Row="2"
+                                                    Grid.Column="2"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="{Binding Gender}"
+                                                    TextColor="{x:StaticResource Secondary}" />
+
+
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="1"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="Age"
+                                                    TextColor="{x:StaticResource Primary}" />
+                                                <Label
+                                                    Grid.Row="3"
+                                                    Grid.Column="2"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    TextColor="{x:StaticResource Secondary}">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding Age}" />
+                                                                <Span Text=" years" />
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <Label
+                                                    Grid.Row="4"
+                                                    Grid.Column="1"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="Status"
+                                                    TextColor="{x:StaticResource Primary}" />
+                                                <Label
+                                                    Grid.Row="4"
+                                                    Grid.Column="2"
+                                                    FontSize="17"
+                                                    Style="{x:StaticResource MedBookLabelNormal}"
+                                                    Text="{Binding StatusDescription}"
+                                                    TextColor="{Binding ColorName}" />
+
+                                            </Grid>
+                                        </StackLayout>
+
+                                    </Frame>
+
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!--<floatingbuton:FloatingActionButtonView
+                        x:Name="FloatingActionButtonAdd"
+                        AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        ColorNormal="{StaticResource Primary}"
+                        ColorPressed="{StaticResource Primary}"
+                        ColorRipple="{StaticResource Primary}"
+                        Command="{Binding GoToDependants}"
+                        ImageName="addIcon.png"
+                        IsVisible="False" />-->
+
+
+                    <Button
+                        x:Name="FloatingActionButtonAdd"
+                        AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                        AbsoluteLayout.LayoutFlags="PositionProportional"
+                        Command="{Binding GoToDependants}"
+                        FontSize="30"
+                        IsVisible="False"
+                        Style="{StaticResource ButtonMaterialFilledSecondary}"
+                        Text="+" />
+                </AbsoluteLayout>
+            </StackLayout>
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</customRender:CustomContentPageRenderer>

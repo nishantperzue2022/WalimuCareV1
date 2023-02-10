@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.dependants.AddDependantPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:customrenderer="clr-namespace:HkMobileApp.CustomRenderer"
+    xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    Title="Add Dependent"
+    BackgroundColor="White"
+    SubTitle="Enter Dependant Details">
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+
+    <customrenderer:CustomContentPageRenderer.Resources>
+        <ResourceDictionary>
+            <Style
+                x:Key="AddDependantContainerOutline"
+                BasedOn="{StaticResource ContainerOutlineFloat}"
+                TargetType="inputLayout:SfTextInputLayout">
+
+                <Setter Property="Margin" Value="0,0,0,30" />
+            </Style>
+
+
+        </ResourceDictionary>
+    </customrenderer:CustomContentPageRenderer.Resources>
+
+    <ContentPage.Content>
+
+        <StackLayout
+            Margin="0"
+            Padding="20"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            VerticalOptions="FillAndExpand">
+
+
+
+
+            <StackLayout Orientation="Horizontal">
+
+                <ScrollView
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand"
+                    VerticalScrollBarVisibility="Never">
+
+                    <StackLayout
+                        HorizontalOptions="FillAndExpand"
+                        Spacing="0"
+                        VerticalOptions="FillAndExpand">
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Full Name *" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <Entry
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Chat"
+                                Style="{StaticResource MyEditor}"
+                                Text="{Binding FullName}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Date of Birth" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <DatePicker
+                                BackgroundColor="{StaticResource Primary}"
+                                Date="{Binding DateOfBirth}"
+                                Format="dd-MMM-yyyy"
+                                HorizontalOptions="FillAndExpand"
+                                MaximumDate="{Binding MaxDateOfBirth}"
+                                TextColor="{StaticResource DefaultFontColor}" />
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Gender" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <!--<combobox:SfComboBox HeightRequest="50" SelectedItem="{Binding Gender}">
+                                <combobox:SfComboBox.ComboBoxSource>
+                                    <ListCollection:List x:TypeArguments="x:String">
+                                        <x:String>Male</x:String>
+                                        <x:String>Female</x:String>
+                                    </ListCollection:List>
+                                </combobox:SfComboBox.ComboBoxSource>
+                            </combobox:SfComboBox>-->
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Relationship" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <!--<combobox:SfComboBox
+                                DataSource="{Binding Rshps}"
+                                HeightRequest="50"
+                                SelectedItem="{Binding Relationship}">
+
+                            </combobox:SfComboBox>-->
+                        </inputLayout:SfTextInputLayout>
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="NationalID / Birth Certificate  No *" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <Entry
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Telephone"
+                                Style="{StaticResource MyEditor}"
+                                Text="{Binding NationalIdOrBirthCertificateNumber}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Phone Number *" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <Entry
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Telephone"
+                                Style="{StaticResource MyEditor}"
+                                Text="{Binding PhoneNumberDependant}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+                        <Label Style="{StaticResource AddDepedantLabel}" Text="Email *" />
+                        <inputLayout:SfTextInputLayout Style="{x:StaticResource BomaContainerOutline}">
+                            <Entry
+                                HorizontalOptions="FillAndExpand"
+                                Keyboard="Email"
+                                Style="{StaticResource MyEditor}"
+                                Text="{Binding EmailDependant}"
+                                VerticalOptions="CenterAndExpand"
+                                VerticalTextAlignment="Center" />
+                        </inputLayout:SfTextInputLayout>
+
+
+
+
+
+
+                        <StackLayout IsVisible="{Binding IsMarriageCerificateVisible}">
+                            <Label Style="{StaticResource AddDepedantLabel}" Text="Upload Marriage Certificate" />
+                            <StackLayout
+                                Margin="0,0,0,20"
+                                Padding="2"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsFrameMarriageCertVisible}">
+                                    <Grid Padding="2" ColumnDefinitions="0.1*,0.8*,0.1*">
+
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="20"
+                                            Source="selectedfile"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Micro"
+                                            Style="{StaticResource BomaLabel}"
+                                            Text="{Binding MarriageCertificate.FileName}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Image
+                                            Grid.Column="2"
+                                            HeightRequest="20"
+                                            Source="deletePrimary.png"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding RemoveFileCommand}" CommandParameter="Marriage" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+
+
+
+
+
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="clip"
+                                    WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectMarriageCertificateCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+
+                        <StackLayout IsVisible="{Binding IsNationalIdVisible}">
+                            <Label Style="{StaticResource AddDepedantLabel}" Text="Upload National ID / Birth Certificate" />
+                            <StackLayout
+                                Margin="0,0,0,20"
+                                Padding="2"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsNationalIdFrameVisible}">
+                                    <Grid Padding="2" ColumnDefinitions="0.1*,0.8*,0.1*">
+
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="20"
+                                            Source="selectedfile"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Micro"
+                                            Style="{StaticResource BomaLabel}"
+                                            Text="{Binding NationalId.FileName}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Image
+                                            Grid.Column="2"
+                                            HeightRequest="20"
+                                            Source="deletePrimary.png"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding RemoveFileCommand}" CommandParameter="ID" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+
+
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="clip"
+                                    WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectNationalId}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <StackLayout IsVisible="{Binding IsProofOfSchoolingVisible}">
+                            <Label Style="{StaticResource AddDepedantLabel}" Text="Upload Proof of Schooling" />
+                            <StackLayout
+                                Margin="0,0,0,20"
+                                Padding="2"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+
+
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsFrameProofOfSchoolingVisible}">
+                                    <Grid Padding="2" ColumnDefinitions="0.1*,0.8*,0.1*">
+
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="20"
+                                            Source="selectedfile"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Micro"
+                                            Style="{StaticResource BomaLabel}"
+                                            Text="{Binding ProofOfSchooling.FileName}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Image
+                                            Grid.Column="2"
+                                            HeightRequest="20"
+                                            Source="deletePrimary.png"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding RemoveFileCommand}" CommandParameter="School" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+
+
+
+
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="clip"
+                                    WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectProofOfSchoolingCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+
+
+
+
+
+
+
+
+
+
+                        <StackLayout Orientation="Horizontal">
+                            <CheckBox
+                                HeightRequest="45"
+                                HorizontalOptions="Start"
+                                IsChecked="{Binding IsDisabled}"
+                                VerticalOptions="CenterAndExpand"
+                                Color="{StaticResource Primary}" />
+                            <Label
+                                HorizontalOptions="StartAndExpand"
+                                Style="{StaticResource MedBookLabelNormal}"
+                                Text="Is Dependant Disabled ?"
+                                VerticalOptions="CenterAndExpand" />
+                        </StackLayout>
+
+
+
+
+                        <StackLayout IsVisible="{Binding IsProofOfDisabilityVisible}">
+                            <Label Style="{StaticResource AddDepedantLabel}" Text="Upload Disability Card" />
+                            <StackLayout
+                                Margin="0,0,0,20"
+                                Padding="2"
+                                Orientation="Horizontal"
+                                VerticalOptions="CenterAndExpand">
+
+
+                                <Frame
+                                    Margin="0"
+                                    Padding="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    IsVisible="{Binding IsFrameProofOfDisabilityVisible}">
+                                    <Grid Padding="2" ColumnDefinitions="0.1*,0.8*,0.1*">
+
+                                        <Image
+                                            Grid.Column="0"
+                                            HeightRequest="20"
+                                            Source="selectedfile"
+                                            VerticalOptions="CenterAndExpand" />
+
+                                        <Label
+                                            Grid.Column="1"
+                                            FontSize="Micro"
+                                            Style="{StaticResource BomaLabel}"
+                                            Text="{Binding ProofOfDisability.FileName}"
+                                            TextColor="Gray"
+                                            VerticalOptions="CenterAndExpand" />
+                                        <Image
+                                            Grid.Column="2"
+                                            HeightRequest="20"
+                                            Source="deletePrimary.png"
+                                            VerticalOptions="CenterAndExpand">
+                                            <Image.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding RemoveFileCommand}" CommandParameter="Disabled" />
+                                            </Image.GestureRecognizers>
+                                        </Image>
+                                    </Grid>
+                                </Frame>
+
+
+
+
+
+
+
+
+                                <Image
+                                    HeightRequest="25"
+                                    HorizontalOptions="EndAndExpand"
+                                    Source="clip"
+                                    WidthRequest="25">
+                                    <Image.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding SelectProofOfDisabilityCommand}" />
+                                    </Image.GestureRecognizers>
+                                </Image>
+                            </StackLayout>
+                        </StackLayout>
+
+
+                        <Button
+                            Command="{Binding SubmitDependantDetails}"
+                            HorizontalOptions="FillAndExpand"
+                            Style="{x:StaticResource ButtonStyleLogin}"
+                            Text="Save Dependant Details"
+                            VerticalOptions="StartAndExpand" />
+
+
+                    </StackLayout>
+                </ScrollView>
+
+            </StackLayout>
+
+
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</customrenderer:CustomContentPageRenderer>

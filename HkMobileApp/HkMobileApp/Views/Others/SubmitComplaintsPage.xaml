@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.Others.SubmitComplaintsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:buttons="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    Title="Submit Complaints"
+    Shell.NavBarIsVisible="False">
+
+
+    <ContentPage.Content>
+
+        <StackLayout>
+            <Frame
+                Padding="0"
+                BackgroundColor="{StaticResource Primary}"
+                CornerRadius="0"
+                HasShadow="True"
+                HeightRequest="60"
+                IsVisible="{Binding IsCustomNavBarVisible}"
+                VerticalOptions="StartAndExpand">
+                <StackLayout Padding="10" Orientation="Horizontal">
+
+                    <Image
+                        Margin="10,0,0,0"
+                        HeightRequest="20"
+                        HorizontalOptions="Start"
+                        Source="backbutton.png"
+                        VerticalOptions="CenterAndExpand">
+                        <Image.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding BackButtonCommand}" CommandParameter="///HomePage" />
+                        </Image.GestureRecognizers>
+                    </Image>
+
+                    <Label
+                        Margin="10,0,0,0"
+                        FontSize="20"
+                        HorizontalOptions="StartAndExpand"
+                        Style="{StaticResource MedBookLabel}"
+                        Text="Submit Complaint"
+                        TextColor="White"
+                        VerticalOptions="CenterAndExpand" />
+
+                </StackLayout>
+
+            </Frame>
+            <ScrollView Padding="10">
+
+                <StackLayout Margin="10">
+                    <Button
+                        Command="{Binding GoToMyComplaintsCommand}"
+                        CornerRadius="7"
+                        FontSize="13"
+                        Style="{StaticResource ButtonMaterialFilledPrimary2}"
+                        Text="View My Previous Complaints"
+                        TextTransform="None" />
+
+
+                    <Label
+                        Style="{StaticResource BomaLabel}"
+                        Text="Select Complaint Type"
+                        TextColor="{StaticResource Secondary}" />
+
+                    <buttons:SfChipGroup
+                        x:Name="sfChipGroupSearchOptions"
+                        ChipPadding="2,2,0,0"
+                        ItemsSource="{Binding ComplaintsType}"
+                        SelectedChipBackgroundColor="{StaticResource Primary}"
+                        SelectedChipTextColor="{StaticResource HkBackground}"
+                        SelectedItem="{Binding SelectedComplaintType}"
+                        Type="Choice"
+                        VerticalOptions="Start">
+
+                        <buttons:SfChipGroup.ChipLayout>
+
+
+                            <StackLayout
+                                Margin="0"
+                                Padding="0"
+                                HorizontalOptions="FillAndExpand"
+                                Orientation="Vertical"
+                                Spacing="10"
+                                VerticalOptions="FillAndExpand" />
+
+                        </buttons:SfChipGroup.ChipLayout>
+                    </buttons:SfChipGroup>
+
+                    <!--<ListView ItemsSource="{Binding ComplaintsType}" />-->
+
+                    <Label
+                        Margin="2"
+                        Style="{StaticResource BomaLabel}"
+                        Text="Description"
+                        TextColor="{StaticResource Secondary}" />
+
+                    <inputLayout:SfTextInputLayout
+                        Margin="0,0,0,0"
+                        Style="{x:StaticResource BomaContainerOutline}"
+                        VerticalOptions="FillAndExpand">
+                        <Editor
+                            AutoSize="TextChanges"
+                            Text="{Binding ComplaintDescription}"
+                            VerticalOptions="FillAndExpand" />
+                    </inputLayout:SfTextInputLayout>
+
+
+
+                    <Button
+                        Margin="0,0,0,0"
+                        Command="{Binding SubmitComplaintCommand}"
+                        FontSize="13"
+                        HorizontalOptions="FillAndExpand"
+                        Style="{StaticResource ButtonMaterialFilledSecondary}"
+                        Text="Submit Complaint"
+                        TextTransform="None"
+                        VerticalOptions="StartAndExpand" />
+
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,287 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customrenderer:CustomContentPageRenderer
+    x:Class="HkMobileApp.Views.MedicalCover.ViewBomaCoverBenefitsAndPremiumsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:customrenderer="clr-namespace:HkMobileApp.CustomRenderer"
+    Title="Premium and Benefits"
+    Style="{StaticResource MyContentPageStyle}"
+    SubTitle="View Premium amounts to be paid and Benefit Details">
+
+    <Shell.TitleView>
+        <StackLayout
+            BackgroundColor="{StaticResource Primary}"
+            HorizontalOptions="FillAndExpand"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+            <Label
+                Margin="0"
+                Padding="0"
+                FontSize="20"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabel}"
+                Text="{Binding PageTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+            <Label
+                Margin="0,-15,0,0"
+                Padding="0"
+                FontSize="Micro"
+                HorizontalOptions="StartAndExpand"
+                Style="{StaticResource MedBookLabelNormal}"
+                Text="{Binding PageSubTitle}"
+                TextColor="White"
+                VerticalOptions="CenterAndExpand"
+                VerticalTextAlignment="Center" />
+        </StackLayout>
+    </Shell.TitleView>
+
+    <ContentPage.Content>
+        <StackLayout
+            Padding="10"
+            HorizontalOptions="FillAndExpand"
+            Orientation="Vertical"
+            Spacing="0"
+            VerticalOptions="FillAndExpand">
+
+            <Label
+                Margin="5,-10,5,0"
+                FontSize="Large"
+                Style="{StaticResource MedBookLabel}"
+                Text="Premium (Ksh)"
+                TextColor="Black" />
+
+            <ListView
+                HasUnevenRows="True"
+                HeightRequest="200"
+                ItemsSource="{Binding Premiums}"
+                SelectionMode="None"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand"
+                VerticalScrollBarVisibility="Never">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="5"
+                                Padding="0"
+                                HasShadow="True"
+                                HeightRequest="50">
+                                <Grid ColumnDefinitions="0.5*,0.5*">
+
+                                    <StackLayout
+                                        Grid.Column="0"
+                                        BackgroundColor="White"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label
+                                            FontSize="25"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Style="{StaticResource MedBookLabel}"
+                                            Text="{Binding Beneficiary}"
+                                            TextColor="{StaticResource Secondary}"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center" />
+
+                                        <Label
+                                            Margin="0,-20,0,0"
+                                            FontAttributes="Italic"
+                                            FontSize="Micro"
+                                            HorizontalOptions="CenterAndExpand"
+                                            TextColor="{StaticResource Secondary}"
+                                            VerticalOptions="CenterAndExpand">
+
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="Principal + Spouse + " />
+                                                        <Span Text="{Binding NoOfChildren}" />
+                                                        <Span Text=" Children" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+
+                                        </Label>
+
+
+
+                                    </StackLayout>
+
+
+
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        BackgroundColor="{StaticResource Secondary}"
+                                        HorizontalOptions="FillAndExpand"
+                                        VerticalOptions="FillAndExpand">
+                                        <Label
+                                            FontSize="25"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Style="{StaticResource MedBookLabel}"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand"
+                                            VerticalTextAlignment="Center">
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <FormattedString.Spans>
+                                                        <Span Text="{Binding Amount}" />
+                                                        <Span Text=" /=" />
+                                                    </FormattedString.Spans>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
+
+                                        <Label
+                                            Margin="0,-20,0,0"
+                                            FontAttributes="Italic"
+                                            FontSize="Micro"
+                                            HorizontalOptions="CenterAndExpand"
+                                            Text="(Premium per annum)"
+                                            TextColor="White"
+                                            VerticalOptions="CenterAndExpand" />
+                                    </StackLayout>
+
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Label
+                Margin="5"
+                FontSize="Large"
+                Style="{StaticResource MedBookLabel}"
+                Text="Cover Benefits (Ksh)"
+                TextColor="Black"
+                VerticalOptions="StartAndExpand" />
+
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding Covers}"
+                SelectionMode="None"
+                SeparatorVisibility="None"
+                VerticalOptions="FillAndExpand">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                Margin="5"
+                                Padding="0"
+                                Background="{StaticResource PrimarySecondaryBrush}"
+                                CornerRadius="10"
+                                HasShadow="True"
+                                HeightRequest="60">
+
+
+                                <Grid
+                                    Margin="0"
+                                    Padding="0"
+                                    ColumnDefinitions="0.3*,0.7*"
+                                    ColumnSpacing="0"
+                                    HorizontalOptions="FillAndExpand"
+                                    VerticalOptions="FillAndExpand">
+
+
+
+                                    <Label
+                                        Grid.Column="0"
+                                        Margin="5"
+                                        FontSize="18"
+                                        HorizontalOptions="StartAndExpand"
+                                        Style="{StaticResource MedBookLabel}"
+                                        Text="{Binding Name}"
+                                        TextColor="White"
+                                        VerticalOptions="CenterAndExpand" />
+
+                                    <StackLayout
+                                        Grid.Column="1"
+                                        Margin="0"
+                                        Padding="0"
+                                        HorizontalOptions="FillAndExpand"
+                                        Spacing="0"
+                                        VerticalOptions="FillAndExpand">
+                                        <Grid
+                                            Margin="0"
+                                            Padding="0"
+                                            ColumnDefinitions="0.5*,0.5*"
+                                            ColumnSpacing="0"
+                                            HorizontalOptions="FillAndExpand"
+                                            VerticalOptions="FillAndExpand">
+                                            <StackLayout Grid.Column="0" Spacing="0">
+                                                <Label
+                                                    Margin="0"
+                                                    FontSize="20"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Style="{StaticResource MedBookLabel}"
+                                                    TextColor="{StaticResource HkBackground}"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding Mplus3}" />
+                                                                <Span Text="/=" />
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Margin="0,-20,0,0"
+                                                    FontAttributes="Italic"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Text="(M + 3)"
+                                                    TextColor="{StaticResource HkBackground}"
+                                                    VerticalOptions="CenterAndExpand" />
+
+
+                                            </StackLayout>
+                                            <StackLayout Grid.Column="1">
+                                                <Label
+                                                    Margin="0"
+                                                    FontSize="20"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Style="{StaticResource MedBookLabel}"
+                                                    TextColor="{StaticResource HkBackground}"
+                                                    VerticalOptions="CenterAndExpand">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <FormattedString.Spans>
+                                                                <Span Text="{Binding Mplus5}" />
+                                                                <Span Text="/=" />
+                                                            </FormattedString.Spans>
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+                                                <Label
+                                                    Margin="0,-20,0,0"
+                                                    FontAttributes="Italic"
+                                                    FontSize="Micro"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Text="(M + 5)"
+                                                    TextColor="{StaticResource HkBackground}"
+                                                    VerticalOptions="CenterAndExpand" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </StackLayout>
+
+
+                                </Grid>
+
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <Button
+                Margin="5"
+                Command="{Binding ContinueCommand}"
+                Style="{StaticResource ButtonFilledSecondary}"
+                Text="Continue"
+                TextTransform="None" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</customrenderer:CustomContentPageRenderer>

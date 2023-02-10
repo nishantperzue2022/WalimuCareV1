@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="HkMobileApp.Views.MedicalCover.BomaStepTwoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ListCollection="clr-namespace:System.Collections.Generic;assembly=netstandard"
+    xmlns:inputLayout="clr-namespace:Syncfusion.XForms.TextInputLayout;assembly=Syncfusion.Core.XForms"
+    xmlns:syncfusion="clr-namespace:Syncfusion.XForms.Buttons;assembly=Syncfusion.Buttons.XForms"
+    Title="Wote Cover Beneficiaries">
+    <ContentPage.Resources>
+        <syncfusion:SfRadioGroupKey x:Key="benefiriaries" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame>
+                <Label
+                    FontSize="20"
+                    HorizontalOptions="Start"
+                    Text="Tell us who you would like to cover"
+                    TextColor="Black" />
+
+            </Frame>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+
+                <Frame
+                    Grid.Column="0"
+                    BackgroundColor="{StaticResource Secondary}"
+                    BorderColor="Black">
+                    <syncfusion:SfRadioButton
+                        x:Name="m3"
+                        CheckedColor="{StaticResource Primary}"
+                        GroupKey="{StaticResource benefiriaries}"
+                        IsChecked="True"
+                        Text="M+3"
+                        UncheckedColor="Gray" />
+
+                </Frame>
+                <Frame
+                    Grid.Column="1"
+                    BackgroundColor="{StaticResource Secondary}"
+                    BorderColor="Black">
+                    <syncfusion:SfRadioButton
+                        x:Name="m5"
+                        CheckedColor="{StaticResource Primary}"
+                        GroupKey="{StaticResource benefiriaries}"
+                        HorizontalOptions="Start"
+                        Text="M + 5"
+                        UncheckedColor="Gray" />
+
+                </Frame>
+            </Grid>
+            <Label Text="Family Size(including the principal)" />
+            <inputLayout:SfTextInputLayout Hint="Family Size" Style="{x:StaticResource ContainerOutline}">
+
+                <!--<combobox:SfComboBox HeightRequest="50" SelectedItem="">
+                    <combobox:SfComboBox.ComboBoxSource>
+                        <ListCollection:List x:TypeArguments="x:String">
+                            <x:String>1</x:String>
+                            <x:String>2</x:String>
+                            <x:String>3</x:String>
+                            <x:String>4</x:String>
+                            <x:String>5</x:String>
+                        </ListCollection:List>
+                    </combobox:SfComboBox.ComboBoxSource>
+                </combobox:SfComboBox>-->
+            </inputLayout:SfTextInputLayout>
+
+
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>
